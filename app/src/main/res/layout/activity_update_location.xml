@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_sub_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_location_update_click"
+        android:layout_below="@+id/toolbar_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_current_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_2"
+            android:gravity="center"
+            android:textColor="@color/color_base"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/tv_use_current_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:background="@color/color_base"
+            android:gravity="center"
+            android:padding="@dimen/dp_15"
+            android:text="Use my current location"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_locaion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:hint="Search Location"
+            android:inputType="textCapSentences"
+            android:lines="1"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/dp_10"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_base"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/gray_color"></View>
+
+        <ListView
+            android:id="@+id/list_location_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/color_base"
+            android:dividerHeight="@dimen/dp_1"></ListView>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:indeterminate="false"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_location_update_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_base"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="Update Location"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+</RelativeLayout>
