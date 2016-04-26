@@ -100,6 +100,72 @@
                         android:textColor="@color/color_base"
                         android:textSize="@dimen/sp_13" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_shopId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_below="@+id/linear_home_to_dte"
+                    android:padding="@dimen/dp_8">
+
+
+                    <TextView
+                        android:id="@+id/tv_shopId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"
+                        android:text="@string/label_Shop_ID"
+                        android:textColor="@color/black"
+                        />
+
+                    <Spinner
+                        android:id="@+id/spinner_shopId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"></Spinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_orderStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_below="@+id/linear_home_to_dte"
+                    android:padding="@dimen/dp_8">
+
+
+                    <TextView
+                        android:id="@+id/tv_orderStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"
+                        android:text="@string/label_Order_Status"
+                        android:textColor="@color/black"
+                        />
+
+                    <Spinner
+                        android:id="@+id/spinner_orderStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"></Spinner>
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <TextView
