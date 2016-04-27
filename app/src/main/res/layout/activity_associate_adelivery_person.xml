@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/toolbar_root_layout"
+        layout="@layout/toolbar_sub_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_shopId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_weight="2"
+        android:layout_below="@id/toolbar_root_layout"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_shopId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:text="@string/label_Shop_ID"
+            android:textColor="@color/black"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_shopId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"></Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_deliveryPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_weight="2"
+        android:layout_below="@id/ll_shopId"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_deliveryPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:text="@string/label_Delivery_Person"
+            android:textColor="@color/black"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_deliveryPerson"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"></Spinner>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_associateADeliveryPerson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/color_base"
+        android:gravity="center"
+        android:padding="@dimen/dp_15"
+        android:text="@string/label_Associate_A_Delivery_Person"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_19" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:indeterminate="false"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -132,6 +132,15 @@ public class DialogUtils {
         dialog.show();
     }
 
+    public static boolean isSpinnerDefaultValue(BaseActivity activity, String spinnerValue, String labelName) {
+
+        if(spinnerValue.equals(activity.getString(R.string.please_select))){
+            DialogUtils.showDialog(activity, "Please select "+labelName);
+            return false;
+        }
+        return true;
+    }
+
     public static boolean checkForBlank(BaseActivity activity, String fieldName, String fieldValue)
     {
         boolean ret = TextUtils.isEmpty(fieldValue);

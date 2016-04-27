@@ -167,6 +167,30 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activity.AllDeliveryPersonsActivity"
+            android:label="@string/title_activity_forget_password"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.AddADeliveryLocationActivity"
+            android:label="@string/title_activity_add_adelivery_location"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.AssociateADeliveryLocationActivity"
+            android:label="@string/title_activity_add_delivery_location"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.AssociatedDeliveryLocationsActivity"
+            android:label="@string/title_activity_associated_delivery_locations"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+
 
         <!--  receiver for gcm -->
         <receiver

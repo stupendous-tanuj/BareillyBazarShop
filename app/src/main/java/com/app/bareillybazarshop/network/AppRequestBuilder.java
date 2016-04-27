@@ -5,6 +5,7 @@ import com.app.bareillybazarshop.api.output.AssociatedProductResponse;
 import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.AssociatedShopsResponse;
 import com.app.bareillybazarshop.api.output.CommonResponse;
+import com.app.bareillybazarshop.api.output.DeliveryLocationResponse;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;
 import com.app.bareillybazarshop.api.output.LoginResponse;
 import com.app.bareillybazarshop.api.output.MyOrderDetailResponse;
@@ -14,6 +15,7 @@ import com.app.bareillybazarshop.api.output.ProductResponse;
 import com.app.bareillybazarshop.api.output.RecentOrderResponse;
 import com.app.bareillybazarshop.api.output.SellerHubProfileResponse;
 import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
+import com.app.bareillybazarshop.api.output.ShopOperationalTimeResponse;
 import com.app.bareillybazarshop.api.output.ShopProfile;
 import com.app.bareillybazarshop.api.output.ShopProfileResponse;
 import com.app.bareillybazarshop.api.output.ShopReferenceDataResponse;
@@ -125,6 +127,122 @@ public class AppRequestBuilder {
         request.addParam("input", setRequestBody(map));
         return request;
     }
+
+
+    public static AppHttpRequest associatedShopsAPI(String deliveryPersonId, String onlyShopId,AppResponseListener<AssociatedShopsResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Associated_Shops.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("applicationId", AppConstant.APPLICATION_ID);
+        map.put("userId", deliveryPersonId);
+        map.put("shopCategory", "ALL");
+        map.put("productCategory", "ALL");
+        map.put("deliveryLocation", "ALL");
+        map.put("onlyShopId", onlyShopId);
+        map.put("userType", AppConstant.UserType.DELIVERY_PERSON_TYPE);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest addADeliveryLocationAPI(String deliveryLocation, String city,AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Add_A_DeliveryLocation.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("deliveryLocation", deliveryLocation);
+        map.put("city", city);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+
+    public static AppHttpRequest associateADeliveryLocationAPI(String shopId,String deliveryLocation,
+                                                               AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Associate_A_DeliveryLocation.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        map.put("deliveryLocation", deliveryLocation);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest fetchShopOperationalTimeAPI(String shopId,String closingDate,
+                                                             AppResponseListener<ShopOperationalTimeResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Shop_Timings.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        map.put("closingDate", closingDate);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest deAssociateDeliveryLocationAPI(String shopId, String deliveryLocation,
+                                                                AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Deassociate_A_DeliveryLocation.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        map.put("deliveryLocation", deliveryLocation);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest associatedDeliveryLocationAPI(String shopId,
+                                                               AppResponseListener<DeliveryLocationResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Shop_DeliveryLocations.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest associatedDeliveryPersonAPI(String shopId, String all,
+                                                             AppResponseListener<DeliveryPersonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Associated_DeliveryPersons.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        if(all.equals("1"))
+            map.put("shopIdORSellerHubId", USER_ID);
+        else
+            map.put("shopIdORSellerHubId", shopId);
+        map.put("all", all);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest associateADeliveryPersonAPI(String shopIdORSellerHubId, String deliveryPersonId,
+                                                             AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Associate_A_DeliveryPerson.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<>();
+        setUserHeader(map);
+        map.put("shopIdORSellerHubId", shopIdORSellerHubId);
+        map.put("deliveryPersonId", deliveryPersonId);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest removeShopOperationalTimeAPI(String shopId, String closingDate, String shopCategory, String productCategory, AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Remove_Shop_Timings.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        map.put("closingDate", closingDate);
+        map.put("shopCategory", shopCategory);
+        map.put("productCategory", productCategory);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
+    public static AppHttpRequest fetchAvailableDeliveryLocationAPI(String shopId, AppResponseListener<DeliveryLocationResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Available_DeliveryLocations.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("shopId", shopId);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
 
     public static AppHttpRequest VerifyApplicationIDAPI(AppResponseListener<CommonResponse> appResponseListener) {
 

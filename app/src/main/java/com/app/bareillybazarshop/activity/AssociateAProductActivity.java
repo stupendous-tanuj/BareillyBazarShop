@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
+import com.app.bareillybazarshop.api.output.AssociatedShopId;
+import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.Product;
@@ -33,6 +35,7 @@ import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
+import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,11 +65,16 @@ public class AssociateAProductActivity extends BaseActivity {
     private PopupWindow popupWindowserch;
     private ScrollView scrollview_ssocite_product;
     private TextView view;
+    private Spinner spinner_shopId;
+    LinearLayout ll_shopId;
+    String shopIdValue = "";
+    String USER_TYPE = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_associate_product);
+        USER_TYPE = PreferenceKeeper.getInstance().getUserType();
         setUI();
         setUIListner();
         getIntentData();
@@ -132,6 +140,15 @@ public class AssociateAProductActivity extends BaseActivity {
         et_ass_product_add_price = (EditText) findViewById(R.id.et_ass_product_add_price);
         et_ass_product_add_offer_price = (EditText) findViewById(R.id.et_ass_product_add_offer_price);
         cbAvailable = (CheckBox) findViewById(R.id.cb_ass_product_add_availability);
+        ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
+        spinner_shopId = (Spinner) findViewById(R.id.spinner_shopId);
+        if((USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE))) {
+            ll_shopId.setVisibility(View.GONE);
+        }
+        else {
+            ll_shopId.setVisibility(View.VISIBLE);
+            associateShopIdAPI();
+        }
 
         tv_serch_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +180,52 @@ public class AssociateAProductActivity extends BaseActivity {
         });
         AppRestClient.getClient().sendRequest(this, request, TAG);
     }
+
+
+    private void setShopIdSpinner(List<AssociatedShopId> associatedShopId)
+    {
+        final List<String> shopId = new ArrayList<>();
+        shopId.add(getString(R.string.please_select));
+        for (int i = 0; i < associatedShopId.size(); i++)
+            shopId.add(associatedShopId.get(i).getShopID());
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, shopId);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_shopId.setAdapter(dataAdapter);
+        spinner_shopId.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                shopIdValue = shopId.get(pos);
+                if (!shopIdValue.equals(getString(R.string.please_select)))
+                {
+
+                }
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+
+    private void associateShopIdAPI() {
+
+        showProgressBar();
+        AppHttpRequest request = AppRequestBuilder.associatedShopId(new AppResponseListener<AssociatedShopIdResponse>(AssociatedShopIdResponse.class, this) {
+            @Override
+            public void onSuccess(AssociatedShopIdResponse result) {
+                hideProgressBar();
+                setShopIdSpinner(result.getAssociatedShops());
+                //PreferenceKeeper.getInstance().setAssociatedShopId(result.getAssociatedShops());
+            }
+
+            @Override
+            public void onError(ErrorObject error) {
+                hideProgressBar();
+            }
+        });
+        AppRestClient.getClient().sendRequest(this, request, TAG);
+    }
+
 
     private void setSpinnerShopCtegory(List<ShopCategory> shopC) {
         if (shopC.size() == 0) {

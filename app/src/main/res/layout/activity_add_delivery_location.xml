@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_root_layout"
+        layout="@layout/toolbar_sub_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tv_add_delivery_location"
+        android:layout_below="@+id/toolbar_root_layout">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_15">
+
+            <LinearLayout
+                android:id="@+id/ll_shopId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tv_shopId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textSize="@dimen/sp_15"
+                    android:text="@string/label_Shop_ID"
+                    android:textColor="@color/black"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner_shopId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"></Spinner>
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_availableDeliveryLocations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_available_delivery_locations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textSize="@dimen/sp_15"
+                android:text="@string/label_Select_Location_to_Add"
+                android:textColor="@color/black"
+                />
+
+            <Spinner
+                android:id="@+id/spinner_available_delivery_locations"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_add_delivery_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/color_base"
+        android:gravity="center"
+        android:padding="@dimen/dp_15"
+        android:text="@string/label_Associate_A_Delivery_Location"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_19" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:indeterminate="false"
+        android:visibility="gone" />
+</RelativeLayout>
