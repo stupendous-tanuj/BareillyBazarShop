@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="BB101"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="0.8"
-                    android:text="Place By"
+                    android:text="Placed By"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sp_15" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="4794897214"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="1001 Rs"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="12 Jan 11:11 PM"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="Delivery"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="COD"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -213,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="hwi iuhui i uihui hwoqie hid wdhi hi dhqihdiohw"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -241,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="12 jan 22:00 PM"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="af oihohfhoi hff  iifowf hfiohfoq"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -297,7 +297,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:gravity="left"
-                    android:text="Ordered"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -400,7 +400,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="0.8"
-                    android:text="Ordered Accepted By Cutomer"
+                    android:text="Ordered Accepted By Customer"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sp_15" />
 
@@ -439,7 +439,7 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="left"
                     android:padding="@dimen/dp_10"
-                    android:text="3233"
+                    android:text=""
                     android:textColor="@color/color_base"
                     android:textSize="@dimen/sp_13" />
 
@@ -458,7 +458,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="0.8"
-                    android:text="Cutomer Acceptance Collected"
+                    android:text="Customer Acceptance Collected"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sp_15" />
 
@@ -534,7 +534,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_8"
                 android:gravity="left"
-                android:text="SKU1001, Amul , 1 Kg 400 , 2"
+                android:text="Product Details"
                 android:textColor="@color/color_base"
                 android:textSize="@dimen/sp_13" />
 
@@ -543,7 +543,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_8"
                 android:gravity="left"
-                android:text="SKU1001, Amul , 1 Kg 400 , 3"
+                android:text="Product Details"
                 android:textColor="@color/color_base"
                 android:textSize="@dimen/sp_13" />
         </LinearLayout>

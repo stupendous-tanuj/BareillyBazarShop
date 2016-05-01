@@ -54,9 +54,9 @@ public class ShopOperationalTimeAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     private void setData(ShopOperationalTimeHolder holder, final ShopOperationalTime data, final int pos) {
-        holder.tv_shopCategory.setText(data.getShopCategoryName());
+        holder.tv_openingTime.setText(data.getShopOpeningTime());
         holder.tv_closingDate.setText(data.getClosingDate());
-        holder.tv_productCategory.setText(data.getProductCategoryName());
+        holder.tv_closingTime.setText(data.getShopClosingTime());
 
         holder.tv_remove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class ShopOperationalTimeAdapter extends RecyclerView.Adapter<RecyclerVie
                 DialogUtils.showDialogYesNo(activity, activity.getString(R.string.remove_shop_closing_record), activity.getString(R.string.yes), activity.getString(R.string.no), new IDialogListener() {
                     @Override
                     public void onClickOk() {
-                        removeShopOperationalTimeAPI(shopId, data.getClosingDate(),data.getShopCategoryName(),data.getProductCategoryName(), pos);
+                        removeShopOperationalTimeAPI(shopId, data.getClosingDate(), pos);
                     }
 
                     @Override
@@ -80,10 +80,10 @@ public class ShopOperationalTimeAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-    private void removeShopOperationalTimeAPI(String shopId, String closingDate, String shopCategory, String productCategory,final int pos) {
+    private void removeShopOperationalTimeAPI(String shopId, String closingDate,final int pos) {
         activity.showProgressBar();
 
-        AppHttpRequest request = AppRequestBuilder.removeShopOperationalTimeAPI(shopId, closingDate, shopCategory, productCategory, new AppResponseListener<CommonResponse>(CommonResponse.class, activity) {
+        AppHttpRequest request = AppRequestBuilder.removeShopOperationalTimeAPI(shopId, closingDate, new AppResponseListener<CommonResponse>(CommonResponse.class, activity) {
             @Override
             public void onSuccess(CommonResponse result) {
                 activity.hideProgressBar();
@@ -112,8 +112,8 @@ public class ShopOperationalTimeAdapter extends RecyclerView.Adapter<RecyclerVie
 
     public class ShopOperationalTimeHolder extends RecyclerView.ViewHolder {
 
-        private final TextView tv_shopCategory;
-        private final TextView tv_productCategory;
+        private final TextView tv_openingTime;
+        private final TextView tv_closingTime;
         private final TextView tv_closingDate;
         private final TextView tv_remove;
 
@@ -121,8 +121,8 @@ public class ShopOperationalTimeAdapter extends RecyclerView.Adapter<RecyclerVie
             super(view);
             tv_remove = (TextView) view.findViewById(R.id.tv_remove);
             tv_closingDate = (TextView) view.findViewById(R.id.tv_closingDate);
-            tv_productCategory = (TextView) view.findViewById(R.id.tv_productCategory);
-            tv_shopCategory = (TextView) view.findViewById(R.id.tv_shopCategory);
+            tv_closingTime = (TextView) view.findViewById(R.id.tv_closingTime);
+            tv_openingTime = (TextView) view.findViewById(R.id.tv_openingTime);
         }
     }
 }

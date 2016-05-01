@@ -112,6 +112,8 @@ public class AppRequestBuilder {
         map.put("shopOwnerIDNumber", shop.getShopOwnerIDNumber());
         map.put("shopDeliveryTypeSupported", shop.getShopDeliveryTypeSupported());
         map.put("shopPaymentMethodSupported", shop.getShopPaymentMethodSupported());
+        map.put("shopOpeningTime", shop.getShopOpeningTime());
+        map.put("shopClosingTime", shop.getShopClosingTime());
         request.addParam("input", setRequestBody(map));
         return request;
     }
@@ -222,14 +224,12 @@ public class AppRequestBuilder {
         return request;
     }
 
-    public static AppHttpRequest removeShopOperationalTimeAPI(String shopId, String closingDate, String shopCategory, String productCategory, AppResponseListener<CommonResponse> appResponseListener) {
+    public static AppHttpRequest removeShopOperationalTimeAPI(String shopId, String closingDate, AppResponseListener<CommonResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Remove_Shop_Timings.php", appResponseListener);
         Map<String, String> map = new LinkedHashMap<String, String>();
         setUserHeader(map);
         map.put("shopId", shopId);
         map.put("closingDate", closingDate);
-        map.put("shopCategory", shopCategory);
-        map.put("productCategory", productCategory);
         request.addParam("input", setRequestBody(map));
         return request;
     }
@@ -299,7 +299,7 @@ public class AppRequestBuilder {
 
     // http://stupendoustanuj.co.nf/ShopTheFortune/Fetch_All_Orders.php
 
-    public static AppHttpRequest fetchMyOrderDetailAPI(String fromDate, String toDate, AppResponseListener<MyOrderDetailResponse> appResponseListener) {
+    public static AppHttpRequest fetchMyOrderDetailAPI(String shopId,String orderStatus,String fromDate, String toDate, AppResponseListener<MyOrderDetailResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_All_Orders.php", appResponseListener);
 
         Map<String, String> map = new LinkedHashMap<String, String>();
@@ -307,6 +307,8 @@ public class AppRequestBuilder {
         map.put("userType", USER_TYPE);
         map.put("fromDate", fromDate);
         map.put("toDate", toDate);
+        map.put("shopId", shopId);
+        map.put("orderStatus", orderStatus);
         request.addParam("input", setRequestBody(map));
         return request;
     }
@@ -559,20 +561,21 @@ public class AppRequestBuilder {
                                                                String deliveryPersonResidentialAddress,
                                                                String deliveryPersonIDType,
                                                                String deliveryPersonIDNumber,
+                                                               String emailId,
                                                                AppResponseListener<CommonResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Add_A_DeliveryPerson.php", appResponseListener);
         Map<String, String> map = new LinkedHashMap<>();
         setUserHeader(map);
         map.put("deliveryPersonName", deliveryPersonName);
         map.put("deliveryPersonMobileNumber", deliveryPersonMobileNumber);
+        map.put("deliveryPersonEmailId", emailId);
         map.put("deliveryPersonResidentialAddress", deliveryPersonResidentialAddress);
         map.put("deliveryPersonIDType", deliveryPersonIDType);
         map.put("deliveryPersonIDNumber", deliveryPersonIDNumber);
-        map.put("shopIdORSellerHubId", "SP1001");
+        map.put("shopIdORSellerHubId", USER_ID);
         request.addParam("input", setRequestBody(map));
         return request;
     }
-
     // http://stupendoustanuj.co.nf/ShopTheFortune/Contact_us.php
     public static AppHttpRequest contactUsSendMessageApi(String message, AppResponseListener<CommonResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Contact_us.php", appResponseListener);

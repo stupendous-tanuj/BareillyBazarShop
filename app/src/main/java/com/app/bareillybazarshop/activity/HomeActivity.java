@@ -2,11 +2,9 @@ package com.app.bareillybazarshop.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
@@ -38,6 +36,7 @@ import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.AppUtil;
+import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.Logger;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
@@ -65,7 +64,6 @@ public class HomeActivity extends BaseActivity {
     LinearLayout linear_home_shopkeeper_profile = null;
     LinearLayout linear_home_seller_hub_profile = null;
     LinearLayout linear_home_associated_product = null;
-    LinearLayout linear_home_delivery_location = null;
     LinearLayout linear_home_add_a_product = null;
     LinearLayout linear_home_associated_delivery_person = null;
     LinearLayout linear_home_add_delivery_person = null;
@@ -82,12 +80,12 @@ public class HomeActivity extends BaseActivity {
     LinearLayout linear_bar_deliveryLocation = null;
     LinearLayout linear_bar_deliveryPerson = null;
     LinearLayout linear_bar_product = null;
-    LinearLayout linear_home_addADeliveryLocation = null;
     LinearLayout linear_home_addAShop = null;
-    LinearLayout linear_home_all_delivery_person = null;
-    LinearLayout linear_home_associateAProductCategory = null;
-    LinearLayout linear_home_todays_delivery = null;
     LinearLayout linear_home_associatedProductCategory = null;
+    LinearLayout linear_home_all_delivery_person = null;
+    LinearLayout linear_home_delivery_location = null;
+    LinearLayout linear_home_addADeliveryLocation = null;
+
 
     private static DatePickerDialog.OnDateSetListener mDateListner;
     private Spinner spinner_orderStatus;
@@ -118,12 +116,10 @@ public class HomeActivity extends BaseActivity {
     private void getCurrentTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
-        String fromDate = dateFormat.format(cal.getTime());
-        String toDate = dateFormat.format(cal.getTime());
-        tv_from_dte_home.setText(Html.fromHtml("<u>" + fromDate + "</u>"));
-        tv_to_dte_home.setText(Html.fromHtml("<u>" + toDate + "</u>"));
-        from = fromDate;
-        to = toDate;
+        from = dateFormat.format(cal.getTime());
+        to = dateFormat.format(cal.getTime());
+        tv_from_dte_home.setText(Html.fromHtml("<u>" + from + "</u>"));
+        tv_to_dte_home.setText(Html.fromHtml("<u>" + to + "</u>"));
         if(!shopIdValue.equals(getString(R.string.please_select)))
             fetchMyOrderDetailApi(from, to);
     }
@@ -137,19 +133,29 @@ public class HomeActivity extends BaseActivity {
 
 
     private void fetchMyOrderDetailApi(String fromDate, String toDate) {
-        String useType = "Shop";
+
         Logger.INFO(TAG, "From : " + fromDate);
         Logger.INFO(TAG, "To : " + toDate);
 
         long from = AppUtil.getMillisFromDate(fromDate);
         long to = AppUtil.getMillisFromDate(toDate);
 
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
+
         if (from > to) {
-            showToast("From Date cannot be greater then To Date");
+            showToast(getString(R.string.from_date_greater));
             return;
         }
+
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, "Shop ID") || (shopIdValue.equals(""))) {
+            return;
+        }
+
         showProgressBar();
-        AppHttpRequest request = AppRequestBuilder.fetchMyOrderDetailAPI(fromDate, toDate, new AppResponseListener<MyOrderDetailResponse>(MyOrderDetailResponse.class, this) {
+
+        AppHttpRequest request = AppRequestBuilder.fetchMyOrderDetailAPI(shopIdValue, orderStatusValue ,fromDate, toDate, new AppResponseListener<MyOrderDetailResponse>(MyOrderDetailResponse.class, this) {
             @Override
             public void onSuccess(MyOrderDetailResponse result) {
                 hideProgressBar();
@@ -174,8 +180,9 @@ public class HomeActivity extends BaseActivity {
                 if (datePicker.isShown()) {
                     Logger.INFO(TAG, "listner ");
                     tv.setText(year + "-" + getData(++month) + "-" + getData(day));
-                    String from = tv_from_dte_home.getText().toString();
-                    String to = tv_to_dte_home.getText().toString();
+                    from = tv_from_dte_home.getText().toString();
+                    to = tv_to_dte_home.getText().toString();
+                    if(!shopIdValue.equals(getString(R.string.please_select)))
                     fetchMyOrderDetailApi(from, to);
                 }
             }
@@ -341,6 +348,10 @@ public class HomeActivity extends BaseActivity {
         linear_home_associated_shops  = (LinearLayout) findViewById(R.id.linear_home_associated_shops);
         linear_home_addAShop = (LinearLayout) findViewById(R.id.linear_home_addAShop);
         linear_home_addADeliveryLocation = (LinearLayout) findViewById(R.id.linear_home_addADeliveryLocation);
+        linear_home_all_delivery_person = (LinearLayout) findViewById(R.id.linear_home_all_delivery_person);
+
+
+
 
         //linear_home_associateAProductCategory = (LinearLayout) findViewById(R.id.linear_home_associateAProductCategory);
         linear_home_associatedProductCategory = (LinearLayout) findViewById(R.id.linear_home_associatedProductCategory);
@@ -438,6 +449,11 @@ public class HomeActivity extends BaseActivity {
         linear_change_password.setOnClickListener(this);
         linear_home_associated_shops.setOnClickListener(this);
         linear_home_addAShop.setOnClickListener(this);
+        linear_home_my_orders.setOnClickListener(this);
+        linear_home_all_delivery_person.setOnClickListener(this);
+        linear_home_delivery_location.setOnClickListener(this);
+        linear_home_addADeliveryLocation.setOnClickListener(this);
+
     }
 
     @Override
@@ -470,13 +486,13 @@ public class HomeActivity extends BaseActivity {
                 launchActivity(AddProductActivity.class);
                 break;
             case R.id.linear_home_associated_delivery_person:
-                launchActivity(AssociateDeliveryPersonActivity.class);
+                launchActivity(AssociatedDeliveryPersonActivity.class);
                 break;
             case R.id.linear_home_add_delivery_person:
                 launchActivity(AddDeliveryPersonActivity.class);
                 break;
             case R.id.linear_home_shop_operation_time:
-                launchActivity(ShopOperationTimeActivity.class);
+                launchActivity(ViewShopOperationalTimeActivity.class);
                 break;
             case R.id.linear_home_contactus:
                 launchActivity(ContactUsActivity.class);
@@ -506,6 +522,20 @@ public class HomeActivity extends BaseActivity {
             case R.id.linear_home_addAShop:
                 launchActivity(AddAShopActivity.class);
                 break;
+            case R.id.linear_home_my_orders:
+                launchActivity(HomeActivity.class);
+                break;
+            case R.id.linear_home_all_delivery_person:
+                launchActivity(AllDeliveryPersonsActivity.class);
+                break;
+            case R.id.linear_home_delivery_location:
+                launchActivity(AssociatedDeliveryLocationsActivity.class);
+                break;
+            case R.id.linear_home_addADeliveryLocation:
+                launchActivity(AddADeliveryLocationActivity.class);
+                break;
+
+
 
         }
     }

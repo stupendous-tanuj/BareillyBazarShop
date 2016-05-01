@@ -159,6 +159,8 @@
         <string name="label_Email_Id">Email Id</string>
         <string name="label_Minimum_Accepted_Order">Minimum Accepted Order</string>
         <string name="label_Delivery_Charges">Delivery Charges</string>
+        <string name="label_Opening_Time">Opening Time</string>
+        <string name="label_Closing_Time">Closing Time</string>
         <string name="hint_Shop_Name">Shop Name</string>
         <string name="hint_Shop_Description">Shop Description</string>
         <string name="hint_Shop_Owner_Name">Shop Owner Name</string>
@@ -179,7 +181,8 @@
         <string name="label_Add_Shop">Add Shop</string>
         <string name="label_Associated_To">Associated To</string>
         <string name="label_Shop_Rating">Shop Rating</string>
-
+        <string name="hint_Opening_Time">Opening Time</string>
+        <string name="hint_Closing_Time">Closing Time</string>
         <string name="label_change_Language">Change Language</string>
         <string name="label_Select_Language">Select Language</string>
         <string name="label_Current_Language">Current Language</string>
@@ -291,7 +294,8 @@
         <string name="label_Update_Profile">Update Profile</string>
 
         <!--Shop Operational Time-->
-        <string name="label_Closing_Date">Select Closing Date</string>
+        <string name="label_Select_Closing_Date">Select Closing Date</string>
+    <string name="label_Closing_Date">Closing Date</string>
         <string name="hint_Closing_Date">Select Closing Date</string>
         <string name="label_Shop_Operational_Time">Shop Closing Time</string>
 

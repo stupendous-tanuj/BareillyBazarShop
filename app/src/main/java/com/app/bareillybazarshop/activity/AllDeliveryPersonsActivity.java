@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.app.bareillybazarshop.R;
-import com.app.bareillybazarshop.adapter.AssociateDeliveryPersonAdapter;
 import com.app.bareillybazarshop.adapter.AssociatedShopAdapter;
 import com.app.bareillybazarshop.api.output.AssociatedShop;
 import com.app.bareillybazarshop.api.output.AssociatedShopsResponse;

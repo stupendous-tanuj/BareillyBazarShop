@@ -29,6 +29,7 @@ public class AddDeliveryPersonActivity extends BaseActivity {
     private EditText ed_add_delievry_person_mobile_number;
     private EditText ed_add_delievry_person_address;
     private EditText ed_add_delievry_person_id_number;
+    private EditText et_emailId;
     private Spinner spinner_add_delievry_person_id_type;
     private String personIdType;
 
@@ -36,7 +37,7 @@ public class AddDeliveryPersonActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_delivery_person);
-        setHeader("Add Delivery Person", "");
+        setHeader(getString(R.string.header_add_a_delivery_person), "");
         setUI();
         supportedPersonIdTypeApi();
     }
@@ -46,6 +47,7 @@ public class AddDeliveryPersonActivity extends BaseActivity {
         ed_add_delievry_person_mobile_number = (EditText) findViewById(R.id.ed_add_delievry_person_mobile_number);
         ed_add_delievry_person_address = (EditText) findViewById(R.id.ed_add_delievry_person_address);
         ed_add_delievry_person_id_number = (EditText) findViewById(R.id.ed_add_delievry_person_id_number);
+        et_emailId = (EditText) findViewById(R.id.et_emailId);
         spinner_add_delievry_person_id_type = (Spinner) findViewById(R.id.spinner_add_delievry_person_id_type);
         findViewById(R.id.tv_add_delievry_person_add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,15 +58,17 @@ public class AddDeliveryPersonActivity extends BaseActivity {
     }
 
     private void supportedPersonIdTypeApi() {
+        showProgressBar();
         AppHttpRequest request = AppRequestBuilder.supportedPersonIdTypeApi(new AppResponseListener<SupportedIdTypeResponse>(SupportedIdTypeResponse.class, this) {
             @Override
             public void onSuccess(SupportedIdTypeResponse result) {
+                hideProgressBar();
                 setSpinnerPersonIdType(result.getSupportedIDType());
             }
 
             @Override
             public void onError(ErrorObject error) {
-
+                hideProgressBar();
             }
         });
         AppRestClient.getClient().sendRequest(this, request, TAG);
@@ -96,11 +100,12 @@ public class AddDeliveryPersonActivity extends BaseActivity {
         String address = ed_add_delievry_person_address.getText().toString().trim();
         String idType = personIdType;
         String idNumber = ed_add_delievry_person_id_number.getText().toString().trim();
-        if (!DialogUtils.showDialogDeliveryPerson(this, name, mobileNumber, address, idType, idNumber)) {
+        String emailId = et_emailId.getText().toString();
+        if (!DialogUtils.showDialogDeliveryPerson(this, name, mobileNumber, address, idType, idNumber, emailId)) {
             return;
         }
         showProgressBar(findViewById(R.id.tv_add_delievry_person_add));
-        AppHttpRequest request = AppRequestBuilder.addAssociateDeliveryPersonAPI(name, mobileNumber, address, idType, idNumber, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.addAssociateDeliveryPersonAPI(name, mobileNumber, address, idType, idNumber,emailId, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
             @Override
             public void onSuccess(CommonResponse result) {
                 hideProgressBar(findViewById(R.id.tv_add_delievry_person_add));

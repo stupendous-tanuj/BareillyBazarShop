@@ -66,7 +66,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name="com.app.bareillybazarshop.activity.AssociateDeliveryPersonActivity"
+            android:name=".activity.AssociatedDeliveryPersonActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
@@ -86,7 +86,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name="com.app.bareillybazarshop.activity.ShopOperationTimeActivity"
+            android:name=".activity.ShopOperationalTimeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.ViewShopOperationalTimeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
@@ -181,6 +186,12 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".activity.AssociateADeliveryLocationActivity"
+            android:label="@string/title_activity_add_delivery_location"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activity.AssociateADeliveryPersonActivity"
             android:label="@string/title_activity_add_delivery_location"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

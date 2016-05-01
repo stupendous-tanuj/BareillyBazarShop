@@ -1,5 +1,6 @@
 package com.app.bareillybazarshop.activity;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.app.bareillybazarshop.api.output.DeliveryMethod;
 import com.app.bareillybazarshop.api.output.PaymentMethod;
@@ -43,6 +45,8 @@ public class AddAShopActivity extends BaseActivity {
     EditText et_deliveryCharge = null;
     EditText et_ownerIdNumber = null;
     EditText et_shopDescription = null;
+    EditText et_openingTime = null;
+    EditText et_closingTime = null;
     Spinner spinner_ownerIdType = null;
     Spinner spinner_deliveryType = null;
     Spinner spinner_paymentMethod = null;
@@ -76,6 +80,8 @@ public class AddAShopActivity extends BaseActivity {
         et_deliveryCharge = (EditText) findViewById(R.id.et_deliveryCharges);
         et_ownerIdNumber = (EditText) findViewById(R.id.et_ownerIdNumber);
         et_shopDescription = (EditText) findViewById(R.id.et_shopDescription);
+        et_openingTime = (EditText) findViewById(R.id.et_openingTime);
+        et_closingTime = (EditText) findViewById(R.id.et_closingTime);
         spinner_ownerIdType = (Spinner) findViewById(R.id.spinner_ownerIdType);
         spinner_deliveryType = (Spinner) findViewById(R.id.spinner_deliveryType);
         spinner_paymentMethod = (Spinner) findViewById(R.id.spinner_paymentMethod);
@@ -86,6 +92,8 @@ public class AddAShopActivity extends BaseActivity {
 
     private void setUIListener() {
         tv_addShop.setOnClickListener(this);
+        et_openingTime.setOnClickListener(this);
+        et_closingTime.setOnClickListener(this);
     }
 
     @Override
@@ -94,7 +102,26 @@ public class AddAShopActivity extends BaseActivity {
             case R.id.tv_addShop:
                 addAShopAPI();
                 break;
+            case R.id.et_openingTime:
+                setTime(et_openingTime);
+                break;
+            case R.id.et_closingTime:
+                setTime(et_closingTime);
+                break;
         }
+    }
+
+
+    private void setTime(final EditText et) {
+        showTimePickerDialog(new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+                if (timePicker.isShown()) {
+                    String time = getData(hourOfDay) + ":" + getData(minute);
+                    et.setText(time);
+                }
+            }
+        });
     }
 
     private void setStateSpinner()
@@ -159,8 +186,12 @@ public class AddAShopActivity extends BaseActivity {
         shop.setShopOwnerIDNumber(et_ownerIdNumber.getText().toString());
         shop.setShopDeliveryTypeSupported(deliveryType);
         shop.setShopPaymentMethodSupported(paymentMethod);
+        shop.setShopOpeningTime(et_openingTime.getText().toString());
+        shop.setShopClosingTime(et_closingTime.getText().toString());
         return shop;
     }
+
+
 
 
     private boolean dataValidation(ShopProfile shop)
@@ -198,7 +229,7 @@ public class AddAShopActivity extends BaseActivity {
             return false;
         }
 
-        if (!DialogUtils.lengthValidator(this, getString(R.string.label_Pincode), shop.getShopAddressPincode(),6 )) {
+        if (!DialogUtils.lengthValidator(this, getString(R.string.label_Pincode), shop.getShopAddressPincode(), 6)) {
             return false;
         }
 
@@ -259,6 +290,14 @@ public class AddAShopActivity extends BaseActivity {
         }
 
         if (!DialogUtils.checkForBlank(this, getString(R.string.label_Owner_Id_Number), shop.getShopOwnerIDNumber())) {
+            return false;
+        }
+
+        if (!DialogUtils.checkForBlank(this, getString(R.string.label_Opening_Time), shop.getShopOpeningTime())) {
+            return false;
+        }
+
+        if (!DialogUtils.checkForBlank(this, getString(R.string.label_Closing_Time), shop.getShopClosingTime())) {
             return false;
         }
 

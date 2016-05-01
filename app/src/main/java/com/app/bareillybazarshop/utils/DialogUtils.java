@@ -389,33 +389,24 @@ public class DialogUtils {
 
     }
 
-    public static boolean showDialogDeliveryPerson(BaseActivity activity, String name, String mobileNumber, String address, String idType, String idNumber) {
-        boolean ceName = TextUtils.isEmpty(name);
-        boolean cmobileNumber = TextUtils.isEmpty(mobileNumber);
-        boolean caddress = TextUtils.isEmpty(address);
-        boolean cidType = TextUtils.isEmpty(idType);
-        boolean cidNumber = TextUtils.isEmpty(idNumber);
+    public static boolean showDialogDeliveryPerson(BaseActivity activity, String name, String mobileNumber, String address, String idType, String idNumber, String emailId) {
 
-        if (ceName) {
-            DialogUtils.showDialog(activity, "Delivery Person name is not empty");
+        if(!checkForBlank(activity,activity.getString(R.string.label_Name) ,name))
             return false;
-        }
-        if (cmobileNumber) {
-            DialogUtils.showDialog(activity, "Mobile number is not empty");
+        if(!checkForBlank(activity,activity.getString(R.string.label_Mobile_Number) ,mobileNumber))
             return false;
-        }
-        if (caddress) {
-            DialogUtils.showDialog(activity, "Residential Address is not empty");
+        if(!mobileNumberValidator(activity, activity.getString(R.string.label_Mobile_Number), mobileNumber))
             return false;
-        }
-        if (cidType) {
-            DialogUtils.showDialog(activity, "ID Type is not empty");
+        if(!checkForBlank(activity, activity.getString(R.string.label_Email_Id), emailId))
             return false;
-        }
-        if (cidNumber) {
-            DialogUtils.showDialog(activity, "ID Number is not empty");
+        if(!emailValidator(activity, activity.getString(R.string.label_Email_Id), emailId))
             return false;
-        }
+        if(!checkForBlank(activity, activity.getString(R.string.label_Address), address))
+            return false;
+        if(!checkForBlank(activity, activity.getString(R.string.label_Owner_Id_Type), idType))
+            return false;
+        if(!checkForBlank(activity, activity.getString(R.string.label_Owner_Id_Number), idNumber))
+            return false;
 
         return true;
     }

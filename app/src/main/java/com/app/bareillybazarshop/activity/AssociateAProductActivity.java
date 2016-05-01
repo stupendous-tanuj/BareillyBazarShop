@@ -345,6 +345,9 @@ public class AssociateAProductActivity extends BaseActivity {
         }
         final List<String> categories = new ArrayList<>();
         for (Product method : products) {
+            if(method.getProductNameHindi().equals("") || method.getProductNameHindi().equals(null))
+            categories.add(method.getProductNameEnglish());
+            else
             categories.add(method.getProductNameEnglish() + ", " + method.getProductNameHindi());
         }
 

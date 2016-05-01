@@ -7,8 +7,25 @@ public class ShopOperationalTime {
 
     private String shopId;
     private String closingDate;
-    private String shopCategoryName;
-    private String productCategoryName;
+
+    public String getShopOpeningTime() {
+        return shopOpeningTime;
+    }
+
+    public void setShopOpeningTime(String shopOpeningTime) {
+        this.shopOpeningTime = shopOpeningTime;
+    }
+
+    public String getShopClosingTime() {
+        return shopClosingTime;
+    }
+
+    public void setShopClosingTime(String shopClosingTime) {
+        this.shopClosingTime = shopClosingTime;
+    }
+
+    private String shopOpeningTime;
+    private String shopClosingTime;
 
     private String additionalFields;
 
@@ -37,21 +54,6 @@ public class ShopOperationalTime {
         this.closingDate = closingDate;
     }
 
-    public String getShopCategoryName() {
-        return shopCategoryName;
-    }
-
-    public void setShopCategoryName(String shopCategoryName) {
-        this.shopCategoryName = shopCategoryName;
-    }
-
-    public String getProductCategoryName() {
-        return productCategoryName;
-    }
-
-    public void setProductCategoryName(String productCategoryName) {
-        this.productCategoryName = productCategoryName;
-    }
 
 
 }

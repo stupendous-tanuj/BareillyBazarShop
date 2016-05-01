@@ -9,11 +9,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
-import com.app.bareillybazarshop.adapter.AssociateDeliveryPersonAdapter;
 import com.app.bareillybazarshop.api.output.AssociatedShopId;
 import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.CommonResponse;
-import com.app.bareillybazarshop.api.output.DeliveryPerson;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.network.AppHttpRequest;

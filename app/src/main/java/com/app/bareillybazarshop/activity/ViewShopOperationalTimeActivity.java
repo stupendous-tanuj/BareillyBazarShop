@@ -22,18 +22,11 @@ import java.util.Calendar;
 import java.util.List;
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.adapter.ShopOperationalTimeAdapter;
-import com.app.bareillybazarshop.adapter.ViewProductAdapter;
 import com.app.bareillybazarshop.api.output.AssociatedShopId;
 import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
-import com.app.bareillybazarshop.api.output.Product;
-import com.app.bareillybazarshop.api.output.ProductCategory;
-import com.app.bareillybazarshop.api.output.ProductCategoryResponse;
-import com.app.bareillybazarshop.api.output.ShopCategory;
-import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
 import com.app.bareillybazarshop.api.output.ShopOperationalTime;
 import com.app.bareillybazarshop.api.output.ShopOperationalTimeResponse;
-import com.app.bareillybazarshop.api.output.ViewAvailableProductResponse;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -92,7 +85,7 @@ public class ViewShopOperationalTimeActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_add_shopOperationalTime:
-                launchActivity(ShopOperationTimeActivity.class);
+                launchActivity(ShopOperationalTimeActivity.class);
                 break;
             case R.id.linear_closingDate:
                 setDte(tv_closingDate);
