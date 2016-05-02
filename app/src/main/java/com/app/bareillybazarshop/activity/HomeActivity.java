@@ -111,6 +111,7 @@ public class HomeActivity extends BaseActivity {
         initDrawerToggle(); // set listener of drawer with toggle
         getCurrentTime();
         verifyApplicationIDAPI();
+        fetchMyOrderDetailApi();
     }
 
     private void getCurrentTime() {
@@ -121,7 +122,7 @@ public class HomeActivity extends BaseActivity {
         tv_from_dte_home.setText(Html.fromHtml("<u>" + from + "</u>"));
         tv_to_dte_home.setText(Html.fromHtml("<u>" + to + "</u>"));
         if(!shopIdValue.equals(getString(R.string.please_select)))
-            fetchMyOrderDetailApi(from, to);
+            fetchMyOrderDetailApi();
     }
 
 
@@ -132,30 +133,28 @@ public class HomeActivity extends BaseActivity {
     }
 
 
-    private void fetchMyOrderDetailApi(String fromDate, String toDate) {
+    private void fetchMyOrderDetailApi() {
 
-        Logger.INFO(TAG, "From : " + fromDate);
-        Logger.INFO(TAG, "To : " + toDate);
 
-        long from = AppUtil.getMillisFromDate(fromDate);
-        long to = AppUtil.getMillisFromDate(toDate);
+        long longFrom = AppUtil.getMillisFromDate(from);
+        long longTo = AppUtil.getMillisFromDate(to);
 
         if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
             shopIdValue = PreferenceKeeper.getInstance().getUserId();
         }
 
-        if (from > to) {
+        if (longFrom > longTo) {
             showToast(getString(R.string.from_date_greater));
             return;
         }
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, "Shop ID") || (shopIdValue.equals(""))) {
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals(""))) {
             return;
         }
 
         showProgressBar();
 
-        AppHttpRequest request = AppRequestBuilder.fetchMyOrderDetailAPI(shopIdValue, orderStatusValue ,fromDate, toDate, new AppResponseListener<MyOrderDetailResponse>(MyOrderDetailResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.fetchMyOrderDetailAPI(shopIdValue, orderStatusValue ,from, to, new AppResponseListener<MyOrderDetailResponse>(MyOrderDetailResponse.class, this) {
             @Override
             public void onSuccess(MyOrderDetailResponse result) {
                 hideProgressBar();
@@ -183,7 +182,7 @@ public class HomeActivity extends BaseActivity {
                     from = tv_from_dte_home.getText().toString();
                     to = tv_to_dte_home.getText().toString();
                     if(!shopIdValue.equals(getString(R.string.please_select)))
-                    fetchMyOrderDetailApi(from, to);
+                    fetchMyOrderDetailApi();
                 }
             }
         };
@@ -241,12 +240,12 @@ public class HomeActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 orderStatusValue = orderStatus.get(pos);
                 if (!shopIdValue.equals(getString(R.string.please_select)))
-                    fetchMyOrderDetailApi(from, to);
+                    fetchMyOrderDetailApi();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
                 if (!shopIdValue.equals(getString(R.string.please_select)))
-                    fetchMyOrderDetailApi(from, to);
+                    fetchMyOrderDetailApi();
             }
         });
     }
@@ -265,7 +264,7 @@ public class HomeActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 shopIdValue = shopId.get(pos);
                 if (!shopIdValue.equals(getString(R.string.please_select)))
-                    fetchMyOrderDetailApi(from, to);
+                    fetchMyOrderDetailApi();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {

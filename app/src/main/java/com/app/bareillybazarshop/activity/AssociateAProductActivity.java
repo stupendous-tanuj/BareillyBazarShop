@@ -312,7 +312,7 @@ public class AssociateAProductActivity extends BaseActivity {
 
     private void fetchAvailableProductApi(String shopCN, String productCN) {
         showProgressBar();
-        AppHttpRequest request = AppRequestBuilder.fetchAvailableProductApi(shopCN, productCN, new AppResponseListener<ProductResponse>(ProductResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.fetchAvailableProductApi(shopIdValue, shopCN, productCN, new AppResponseListener<ProductResponse>(ProductResponse.class, this) {
             @Override
             public void onSuccess(ProductResponse result) {
                 hideProgressBar();
@@ -389,12 +389,13 @@ public class AssociateAProductActivity extends BaseActivity {
                 spinner_ass_shop_ctegory.setEnabled(true);
                 spinner_ass_product_ctegory.setEnabled(true);
                 spinner_ass_product.setEnabled(true);
+                ll_shopId.setVisibility(View.VISIBLE);
             } else {
                 linear_spinner_shop_ctegory.setVisibility(View.GONE);
                 linear_spinner_product_ctegory.setVisibility(View.GONE);
                 linear_spinner_shop_product.setVisibility(View.GONE);
-                tv_add_associate_product.setText("Update Associate Product");
-                setHeader("Update Associate Product", "");
+                tv_add_associate_product.setText("Update Associated Product");
+                setHeader("Update Associated Product", "");
                 String SKU_ID = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.SKU_ID);
                 String ENGLISH_NAME = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.ENGLISH_NAME);
                 String HINDI_NAME = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.HINDI_NAME);
@@ -403,7 +404,9 @@ public class AssociateAProductActivity extends BaseActivity {
                 String PRICE = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.PRICE);
                 String OFFER_PRICE = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.OFFER_PRICE);
                 String IMAGE = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.IMAGE);
-
+                shopIdValue = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.SHOP_ID);
+                ll_shopId.setVisibility(View.GONE);
+                tv_serch_product.setVisibility(View.GONE);
                 tv_ass_product_add_sku.setText(SKU_ID);
                 tv_ass_product_add_english_name.setText(ENGLISH_NAME);
                 tv_ass_product_add_hindi_name.setText(HINDI_NAME);
@@ -433,7 +436,7 @@ public class AssociateAProductActivity extends BaseActivity {
     }
 
     private void addAssociatedProductAPI() {
-        String shopId = "SP1001";
+
         String sku = tv_ass_product_add_sku.getText().toString();
         String productAvailability = cbAvailable.isChecked() == true ? "1" : "0";
         String price = et_ass_product_add_price.getText().toString().trim();
@@ -442,7 +445,7 @@ public class AssociateAProductActivity extends BaseActivity {
             return;
         }
         showProgressBar(tv_add_associate_product);
-        AppHttpRequest request = AppRequestBuilder.addAssociatedProductAPI(shopId, sku, productAvailability, price, offerPrice, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.addAssociatedProductAPI(shopIdValue, sku, productAvailability, price, offerPrice, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
             @Override
             public void onSuccess(CommonResponse result) {
                 hideProgressBar(tv_add_associate_product);
@@ -459,7 +462,7 @@ public class AssociateAProductActivity extends BaseActivity {
     }
 
     private void updateAddAssociatedProductAPI() {
-        String shopId = "SP1001";
+
         String sku = tv_ass_product_add_sku.getText().toString();
         String productAvailability = cbAvailable.isChecked() == true ? "1" : "0";
         String price = et_ass_product_add_price.getText().toString().trim();
@@ -468,7 +471,7 @@ public class AssociateAProductActivity extends BaseActivity {
             return;
         }
         showProgressBar(tv_add_associate_product);
-        AppHttpRequest request = AppRequestBuilder.updateAssociatedProductAPI(shopId, sku, productAvailability, price, offerPrice, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.updateAssociatedProductAPI(shopIdValue, sku, productAvailability, price, offerPrice, new AppResponseListener<CommonResponse>(CommonResponse.class, this) {
             @Override
             public void onSuccess(CommonResponse result) {
                 hideProgressBar(tv_add_associate_product);

@@ -29,11 +29,13 @@ public class AssociatedProductAdapter extends BaseAdapter {
     private final LayoutInflater inflater;
     private BaseActivity activity;
     private List<Product> product;
+    private String shopId;
 
-    public AssociatedProductAdapter(BaseActivity activity, List<Product> product) {
+    public AssociatedProductAdapter(BaseActivity activity, List<Product> product, String shopId) {
         this.activity = activity;
         inflater = LayoutInflater.from(activity);
         this.product = product;
+        this.shopId = shopId;
     }
 
 
@@ -115,6 +117,7 @@ public class AssociatedProductAdapter extends BaseAdapter {
                 bundle.putString(AppConstant.BUNDLE_KEY.PRICE, product.getProductPrice());
                 bundle.putString(AppConstant.BUNDLE_KEY.OFFER_PRICE, product.getProductOfferedPrice());
                 bundle.putString(AppConstant.BUNDLE_KEY.IMAGE, product.getProductImageName());
+                bundle.putString(AppConstant.BUNDLE_KEY.SHOP_ID, shopId);
                 activity.launchActivity(AssociateAProductActivity.class, bundle);
             }
         });
@@ -122,7 +125,6 @@ public class AssociatedProductAdapter extends BaseAdapter {
 
     private void deassociatedProductAPI(String productSKU, final int pos) {
         activity.showProgressBar();
-        String shopId = "SP1001";
         AppHttpRequest request = AppRequestBuilder.deassociatedProductAPI(shopId, productSKU, new AppResponseListener<CommonResponse>(CommonResponse.class, activity) {
             @Override
             public void onSuccess(CommonResponse result) {

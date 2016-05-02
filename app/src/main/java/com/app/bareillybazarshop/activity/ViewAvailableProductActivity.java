@@ -25,6 +25,7 @@ import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
+import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.ArrayList;
@@ -126,7 +127,7 @@ public class ViewAvailableProductActivity extends BaseActivity {
         spinner_add_product_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 productCN = categories.get(pos);
-                viewAvailableProductAPI(shopCN, productCN);
+                viewAvailableProductAPI();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -185,7 +186,7 @@ public class ViewAvailableProductActivity extends BaseActivity {
                 shopIdValue = shopId.get(pos);
                 if (!shopIdValue.equals(getString(R.string.please_select)))
                 {
-
+                    viewAvailableProductAPI();
                 }
             }
 
@@ -215,13 +216,18 @@ public class ViewAvailableProductActivity extends BaseActivity {
     }
 
 
-    private void viewAvailableProductAPI(final String shopCN, final String productCN) {
+    private void viewAvailableProductAPI() {
+
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals(""))) {
+            return;
+        }
+
         showProgressBar();
-        AppHttpRequest request = AppRequestBuilder.viewAvailableProductAPI("SP1001", shopCN, productCN, new AppResponseListener<ViewAvailableProductResponse>(ViewAvailableProductResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.viewAvailableProductAPI(shopIdValue, shopCN, productCN, new AppResponseListener<ViewAvailableProductResponse>(ViewAvailableProductResponse.class, this) {
             @Override
             public void onSuccess(ViewAvailableProductResponse result) {
                 hideProgressBar();
-                setDeliveryAddressAdapter(shopCN, productCN, result.getProducts());
+                setAvailableProductAdapter(shopCN, productCN, result.getProducts());
             }
 
             @Override
@@ -232,7 +238,7 @@ public class ViewAvailableProductActivity extends BaseActivity {
         AppRestClient.getClient().sendRequest(this, request, TAG);
     }
 
-    private void setDeliveryAddressAdapter(String shopCN, String productCN, List<Product> customerAddresses) {
+    private void setAvailableProductAdapter(String shopCN, String productCN, List<Product> customerAddresses) {
         if (customerAddresses.size() == 0) {
             tv_no_product_found.setVisibility(View.VISIBLE);
             lv_associated_product.setVisibility(View.GONE);

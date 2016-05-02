@@ -448,11 +448,11 @@ public class AppRequestBuilder {
         return request;
     }
 
-    public static AppHttpRequest fetchAvailableProductApi(String shopcategoryName, String productCategoryName, AppResponseListener<ProductResponse> appResponseListener) {
+    public static AppHttpRequest fetchAvailableProductApi(String shopId, String shopcategoryName, String productCategoryName, AppResponseListener<ProductResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Available_Products.php", appResponseListener);
         Map<String, String> map = new LinkedHashMap<String, String>();
         setUserHeader(map);
-        map.put("shopId", "SP1001");
+        map.put("shopId", shopId);
         map.put("shopCategoryName", shopcategoryName);
         map.put("productCategoryName", productCategoryName);
         request.addParam("input", setRequestBody(map));

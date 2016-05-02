@@ -20,6 +20,7 @@ import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
+import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.ArrayList;
@@ -79,8 +80,13 @@ public class AssociatedProductActivity extends BaseActivity {
 
 
     private void fetchAssociatedProductListApi() {
+
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals(""))) {
+            return;
+        }
+
         showProgressBar();
-        AppHttpRequest request = AppRequestBuilder.fetchAssociatedProductListAPI("SP1001", new AppResponseListener<AssociatedProductResponse>(AssociatedProductResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.fetchAssociatedProductListAPI(shopIdValue, new AppResponseListener<AssociatedProductResponse>(AssociatedProductResponse.class, this) {
             @Override
             public void onSuccess(AssociatedProductResponse result) {
                 hideProgressBar();
@@ -109,7 +115,7 @@ public class AssociatedProductActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 shopIdValue = shopId.get(pos);
                 if (!shopIdValue.equals(getString(R.string.please_select))) {
-
+                    fetchAssociatedProductListApi();
                 }
             }
 
@@ -139,8 +145,8 @@ public class AssociatedProductActivity extends BaseActivity {
     }
 
 
-    private void setAssciateProductAdapter(List<Product> customerAddresses) {
-        AssociatedProductAdapter deliveryAddressAdapter = new AssociatedProductAdapter(this, customerAddresses);
+    private void setAssciateProductAdapter(List<Product> productList) {
+        AssociatedProductAdapter deliveryAddressAdapter = new AssociatedProductAdapter(this, productList, shopIdValue);
         lv_associated_product.setAdapter(deliveryAddressAdapter);
     }
 
