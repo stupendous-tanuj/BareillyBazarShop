@@ -72,7 +72,7 @@ public class HomeActivity extends BaseActivity {
     LinearLayout linear_home_logout = null;
     LinearLayout linear_home_from_dte = null;
     LinearLayout linear_home_to_dte = null;
-
+    LinearLayout linear_user_messages = null;
     LinearLayout linear_home_my_orders = null;
     LinearLayout linear_home_associated_shops = null;
     LinearLayout linear_change_password = null;
@@ -210,7 +210,7 @@ public class HomeActivity extends BaseActivity {
         if (carts == null || carts.size() == 0) {
             recycleView.setVisibility(View.GONE);
             no_data_available.setVisibility(View.VISIBLE);
-            no_data_available.setText("My order is not available.");
+            no_data_available.setText(getString(R.string.msg_No_Order_Found));
         } else {
             recycleView.setVisibility(View.VISIBLE);
             no_data_available.setVisibility(View.GONE);
@@ -229,7 +229,8 @@ public class HomeActivity extends BaseActivity {
         orderStatus.add(AppConstant.STATUS.STATUS_ALL);
         orderStatus.add(AppConstant.STATUS.STATUS_ORDERED);
         orderStatus.add(AppConstant.STATUS.STATUS_CONFIRMED);
-        orderStatus.add(AppConstant.STATUS.STATUS_SUBSCRIBED);
+        orderStatus.add(AppConstant.STATUS.STATUS_PREPARED);
+        orderStatus.add(AppConstant.STATUS.STATUS_DISPATCHED);
         orderStatus.add(AppConstant.STATUS.STATUS_DELIVERED);
         orderStatus.add(AppConstant.STATUS.STATUS_CLOSED);
 
@@ -308,7 +309,7 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onError(ErrorObject error) {
                 hideProgressBar();
-                showToast("Application is Blocked.");
+                showToast(getString(R.string.msg_Application_Blocked));
             }
         });
         AppRestClient.getClient().sendRequest(this, request, TAG);
@@ -348,7 +349,7 @@ public class HomeActivity extends BaseActivity {
         linear_home_addAShop = (LinearLayout) findViewById(R.id.linear_home_addAShop);
         linear_home_addADeliveryLocation = (LinearLayout) findViewById(R.id.linear_home_addADeliveryLocation);
         linear_home_all_delivery_person = (LinearLayout) findViewById(R.id.linear_home_all_delivery_person);
-
+        linear_user_messages = (LinearLayout) findViewById(R.id.linear_user_messages);
 
 
 
@@ -452,7 +453,7 @@ public class HomeActivity extends BaseActivity {
         linear_home_all_delivery_person.setOnClickListener(this);
         linear_home_delivery_location.setOnClickListener(this);
         linear_home_addADeliveryLocation.setOnClickListener(this);
-
+        linear_user_messages.setOnClickListener(this);
     }
 
     @Override
@@ -533,8 +534,9 @@ public class HomeActivity extends BaseActivity {
             case R.id.linear_home_addADeliveryLocation:
                 launchActivity(AddADeliveryLocationActivity.class);
                 break;
-
-
+            case R.id.linear_user_messages:
+                launchActivity(UserMessagesActivity.class);
+                break;
 
         }
     }

@@ -42,6 +42,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/no_data_available"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text=""
+        android:textColor="@color/color_base"
+        android:textSize="@dimen/sp_20"
+        android:visibility="gone" />
+
 
     <ListView
         android:id="@+id/lv_associated_product"

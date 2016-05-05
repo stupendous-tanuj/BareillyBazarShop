@@ -142,11 +142,11 @@ public class AssociateADeliveryPersonActivity extends BaseActivity {
 
     private void associateADeliveryPersonAPI() {
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, "Shop ID")) {
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID))) {
             return;
         }
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, deliveryPerson, "Delivery Person")) {
+        if (!DialogUtils.isSpinnerDefaultValue(this, deliveryPerson, getString(R.string.label_Delivery_Person))) {
             return;
         }
         deliveryPerson = deliveryPerson.split(" ")[0];

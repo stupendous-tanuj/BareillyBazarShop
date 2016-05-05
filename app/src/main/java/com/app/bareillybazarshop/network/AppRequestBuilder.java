@@ -20,6 +20,7 @@ import com.app.bareillybazarshop.api.output.ShopProfile;
 import com.app.bareillybazarshop.api.output.ShopProfileResponse;
 import com.app.bareillybazarshop.api.output.ShopReferenceDataResponse;
 import com.app.bareillybazarshop.api.output.SupportedIdTypeResponse;
+import com.app.bareillybazarshop.api.output.UserMessageResponse;
 import com.app.bareillybazarshop.api.output.ViewAvailableProductResponse;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.utils.Logger;
@@ -178,6 +179,18 @@ public class AppRequestBuilder {
         return request;
     }
 
+    public static AppHttpRequest fetchOrderDetailsAPI(String orderId, String orderStatus, AppResponseListener<MyOrderDetailResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Order_Details.php", appResponseListener);
+
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("orderId", orderId);
+        map.put("orderStatus", orderStatus);
+        map.put("userType", USER_TYPE);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
     public static AppHttpRequest deAssociateDeliveryLocationAPI(String shopId, String deliveryLocation,
                                                                 AppResponseListener<CommonResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Deassociate_A_DeliveryLocation.php", appResponseListener);
@@ -313,6 +326,29 @@ public class AppRequestBuilder {
         return request;
     }
 
+    public static AppHttpRequest updateOrderStatusAPI(String orderId,String fromOrderStatus, String toOrderStatus, String additionalField, AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Update_Order_Status.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("orderId", orderId);
+        map.put("toOrderStatus", toOrderStatus);
+        map.put("fromOrderStatus", fromOrderStatus);
+        if(toOrderStatus.equals(AppConstant.STATUS.STATUS_DELIVERED)) {
+            map.put("orderInvoiceAmount", additionalField);
+            map.put("orderReceiptAcknowledgement", "Y");
+        }
+        if(toOrderStatus.equals(AppConstant.STATUS.STATUS_CANCELLED))
+            map.put("orderCancellationReason", additionalField);
+        if(toOrderStatus.equals(AppConstant.STATUS.STATUS_PREPARED))
+            map.put("orderBeingShippedBy", additionalField);
+        if(toOrderStatus.equals(AppConstant.STATUS.STATUS_CLOSED)) {
+            map.put("orderInvoiceAmountCollected", "Y");
+            map.put("orderReceiptAcknowledgementCollected", "Y");
+        }
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
     public static AppHttpRequest associatedShopId(AppResponseListener<AssociatedShopIdResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Associated_Shops.php", appResponseListener);
         Map<String, String> map = new LinkedHashMap<>();
@@ -415,6 +451,15 @@ public class AppRequestBuilder {
         return request;
     }
 
+    public static AppHttpRequest fetchUserMessagesAPI(String userType,AppResponseListener<UserMessageResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_User_Messages.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("userType", userType);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
     // http://stupendoustanuj.co.nf/ShopTheFortune/Deassociate_A_Product.php
     public static AppHttpRequest deassociatedProductAPI(String shopId, String productSKUID, AppResponseListener<CommonResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Deassociate_A_Product.php", appResponseListener);
@@ -448,16 +493,7 @@ public class AppRequestBuilder {
         return request;
     }
 
-    public static AppHttpRequest fetchAvailableProductApi(String shopId, String shopcategoryName, String productCategoryName, AppResponseListener<ProductResponse> appResponseListener) {
-        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Available_Products.php", appResponseListener);
-        Map<String, String> map = new LinkedHashMap<String, String>();
-        setUserHeader(map);
-        map.put("shopId", shopId);
-        map.put("shopCategoryName", shopcategoryName);
-        map.put("productCategoryName", productCategoryName);
-        request.addParam("input", setRequestBody(map));
-        return request;
-    }
+
 
 
     /// http://stupendoustanuj.co.nf/ShopTheFortune/Associate_A_Product.php
@@ -583,6 +619,7 @@ public class AppRequestBuilder {
         Map<String, String> map = new LinkedHashMap<String, String>();
         setUserHeader(map);
         map.put("message", message);
+        map.put("userType", USER_TYPE);
         request.addParam("input", setRequestBody(map));
         return request;
     }

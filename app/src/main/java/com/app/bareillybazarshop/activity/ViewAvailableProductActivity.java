@@ -48,7 +48,7 @@ public class ViewAvailableProductActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_available_product);
-        setHeader("View Available Product", "");
+        setHeader(getString(R.string.header_View_Available_Product), "");
         USER_TYPE = PreferenceKeeper.getInstance().getUserType();
         setUI();
         fetchAllShopCategoryApi();
@@ -127,6 +127,7 @@ public class ViewAvailableProductActivity extends BaseActivity {
         spinner_add_product_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 productCN = categories.get(pos);
+                if (!shopIdValue.equals(getString(R.string.please_select)))
                 viewAvailableProductAPI();
             }
 

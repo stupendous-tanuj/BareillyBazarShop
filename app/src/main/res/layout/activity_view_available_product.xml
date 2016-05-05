@@ -173,7 +173,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="No product is found."
+        android:text=""
         android:textColor="@color/color_base"
         android:textSize="@dimen/sp_16"
         android:textStyle="bold"

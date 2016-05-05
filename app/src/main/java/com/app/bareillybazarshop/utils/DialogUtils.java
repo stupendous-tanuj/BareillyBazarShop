@@ -141,6 +141,19 @@ public class DialogUtils {
         return true;
     }
 
+
+    public static boolean isUpdateOrderDetailsVerification(BaseActivity activity, String toOrderStatusValue) {
+
+        if(!checkForBlank(activity,activity.getString(R.string.label_To_Order_Status), toOrderStatusValue))
+            return false;
+
+        if (toOrderStatusValue.equals("NA")) {
+            DialogUtils.showDialog(activity, activity.getString(R.string.NA_orderStatus));
+            return false;
+        }
+        return true;
+    }
+
     public static boolean checkForBlank(BaseActivity activity, String fieldName, String fieldValue)
     {
         boolean ret = TextUtils.isEmpty(fieldValue);
@@ -150,6 +163,37 @@ public class DialogUtils {
         }
         return true;
 
+    }
+
+    public static boolean isChecked(BaseActivity activity, String fieldName, boolean checked)
+    {
+        if(checked == false)
+            DialogUtils.showDialog(activity, fieldName+" should be checked");
+
+        return checked;
+    }
+
+
+
+    public static boolean isQuotedAmountVerification(BaseActivity activity, String quotedAmount, String invoiceAmount) {
+
+        if(!checkForBlank(activity,activity.getString(R.string.label_Quoted_Amount), quotedAmount))
+            return false;
+        if(!checkForBlank(activity,activity.getString(R.string.label_Invoice_Amount), invoiceAmount))
+            return false;
+        if(!integerValidator(activity, activity.getString(R.string.label_Quoted_Amount), quotedAmount))
+            return false;
+        if(!integerValidator(activity, activity.getString(R.string.label_Invoice_Amount), invoiceAmount))
+            return false;
+
+        int quoted = Integer.parseInt(quotedAmount);
+        int invoice = Integer.parseInt(invoiceAmount);
+
+        if (quoted!=invoice) {
+            DialogUtils.showDialog(activity, activity.getString(R.string.notEqual_quotedInvoice));
+            return false;
+        }
+        return true;
     }
 
     public static boolean emailValidator(BaseActivity activity, String field,String email)

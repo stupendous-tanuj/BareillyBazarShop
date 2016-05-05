@@ -51,7 +51,7 @@ public class ShopOperationalTimeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_operational_time);
-        setHeader("Shop Closing Time", "");
+        setHeader(getString(R.string.header_shop_operational_time), "");
         USER_TYPE = PreferenceKeeper.getInstance().getUserType();
         setUI();
     }

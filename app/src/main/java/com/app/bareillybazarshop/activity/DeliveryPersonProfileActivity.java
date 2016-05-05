@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.api.output.DeliveryPerson;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;

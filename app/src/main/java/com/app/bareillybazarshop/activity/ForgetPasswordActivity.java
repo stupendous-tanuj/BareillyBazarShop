@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;

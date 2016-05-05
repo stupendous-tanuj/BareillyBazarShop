@@ -45,7 +45,7 @@ public class AddProductActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-        setHeader("Add Product", "");
+        setHeader(getString(R.string.header_Add_Product), "");
         setUI();
         fetchAllShopCategoryApi();
         fetchOrderUnitApi();

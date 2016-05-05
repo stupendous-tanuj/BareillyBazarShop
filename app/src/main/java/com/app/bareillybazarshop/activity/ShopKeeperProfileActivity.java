@@ -64,7 +64,7 @@ public class ShopKeeperProfileActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_keeper_profile);
-        setHeader("Shop Keeper Profile", "");
+        setHeader(getString(R.string.header_Shop_Keeper_Profile), "");
         setUI();
         setUIListner();
         fetchShopKeeperProfileApi();
@@ -271,7 +271,7 @@ public class ShopKeeperProfileActivity extends BaseActivity {
         int open = AppUtil.getTotlTime(openingTime);
         int close = AppUtil.getTotlTime(closingTime);
         if (open > close) {
-            showToast("Opening time cannot be greater than Closing time");
+            showToast(getString(R.string.msg_opening_greater_closing));
             return;
         }
         showProgressBar(findViewById(R.id.tv_update_profile));

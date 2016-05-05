@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;

@@ -640,6 +640,30 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/linear_user_messages"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:layout_marginTop="@dimen/dp_5"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@drawable/msg_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="@string/menu_user_messages"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_13" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/linear_home_contactus"

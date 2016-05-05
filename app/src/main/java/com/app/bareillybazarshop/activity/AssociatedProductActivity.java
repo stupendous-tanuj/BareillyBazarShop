@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.adapter.AssociatedProductAdapter;
@@ -15,6 +16,7 @@ import com.app.bareillybazarshop.api.output.AssociatedShopId;
 import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.Product;
+import com.app.bareillybazarshop.api.output.UserMessages;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -28,18 +30,19 @@ import java.util.List;
 
 public class AssociatedProductActivity extends BaseActivity {
 
-    private ListView lv_associated_product;
     String shopIdValue = "";
     private Spinner spinner_shopId;
     LinearLayout ll_shopId;
     String USER_TYPE = "";
+    private TextView no_data_available;
+    private ListView lv_associated_product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_associated_product);
         USER_TYPE = PreferenceKeeper.getInstance().getUserType();
-        setHeader("Associated Product", "");
+        setHeader(getString(R.string.header_Associated_Product), "");
         setUI();
 
     }
@@ -67,6 +70,7 @@ public class AssociatedProductActivity extends BaseActivity {
         lv_associated_product = (ListView) findViewById(R.id.lv_associated_product);
         ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
         spinner_shopId = (Spinner) findViewById(R.id.spinner_shopId);
+        no_data_available = (TextView) findViewById(R.id.no_data_available);
         if((USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE))) {
             ll_shopId.setVisibility(View.GONE);
         }
@@ -76,6 +80,18 @@ public class AssociatedProductActivity extends BaseActivity {
         }
 
         findViewById(R.id.iv_add_associated_product).setOnClickListener(this);
+    }
+
+    private void setVisibleUI(List<Product> associatedProduct) {
+        if (associatedProduct == null || associatedProduct.size() == 0) {
+            lv_associated_product.setVisibility(View.GONE);
+            no_data_available.setVisibility(View.VISIBLE);
+            no_data_available.setText(getString(R.string.msg_No_Product_Found));
+        } else {
+            lv_associated_product.setVisibility(View.VISIBLE);
+            no_data_available.setVisibility(View.GONE);
+            setAssciateProductAdapter(associatedProduct);
+        }
     }
 
 
@@ -90,7 +106,8 @@ public class AssociatedProductActivity extends BaseActivity {
             @Override
             public void onSuccess(AssociatedProductResponse result) {
                 hideProgressBar();
-                setAssciateProductAdapter(result.getProducts());
+                setVisibleUI(result.getProducts());
+
             }
 
             @Override

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.activity.BaseActivity;
 import com.app.bareillybazarshop.activity.HomeActivity;

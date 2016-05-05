@@ -15,11 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.adapter.ShopOperationalTimeAdapter;
 import com.app.bareillybazarshop.api.output.AssociatedShopId;
@@ -35,6 +30,12 @@ import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.Logger;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class ViewShopOperationalTimeActivity extends BaseActivity {
@@ -207,7 +208,7 @@ public class ViewShopOperationalTimeActivity extends BaseActivity {
             shopIdValue = PreferenceKeeper.getInstance().getUserId();
         }
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, "Shop ID") || (shopIdValue.equals("")) ||(closingDate.equals(""))) {
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals("")) ||(closingDate.equals(""))) {
             return;
         }
 

@@ -29,6 +29,7 @@ import com.app.bareillybazarshop.api.output.ProductCategoryResponse;
 import com.app.bareillybazarshop.api.output.ProductResponse;
 import com.app.bareillybazarshop.api.output.ShopCategory;
 import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
+import com.app.bareillybazarshop.api.output.ViewAvailableProductResponse;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -312,9 +313,9 @@ public class AssociateAProductActivity extends BaseActivity {
 
     private void fetchAvailableProductApi(String shopCN, String productCN) {
         showProgressBar();
-        AppHttpRequest request = AppRequestBuilder.fetchAvailableProductApi(shopIdValue, shopCN, productCN, new AppResponseListener<ProductResponse>(ProductResponse.class, this) {
+        AppHttpRequest request = AppRequestBuilder.viewAvailableProductAPI(shopIdValue, shopCN, productCN, new AppResponseListener<ViewAvailableProductResponse>(ViewAvailableProductResponse.class, this) {
             @Override
-            public void onSuccess(ProductResponse result) {
+            public void onSuccess(ViewAvailableProductResponse result) {
                 hideProgressBar();
                 setSpinnerProduct(result.getProducts());
             }
@@ -384,8 +385,8 @@ public class AssociateAProductActivity extends BaseActivity {
                 tv_add_associate_product.setVisibility(View.GONE);
                 linear_associated_product_root.setVisibility(View.GONE);
                 fetchAllShopCategoryApi();
-                tv_add_associate_product.setText("Associate A Product");
-                setHeader("Associate A Product", "");
+                tv_add_associate_product.setText(getString(R.string.header_associate_a_product));
+                setHeader(getString(R.string.header_associate_a_product), "");
                 spinner_ass_shop_ctegory.setEnabled(true);
                 spinner_ass_product_ctegory.setEnabled(true);
                 spinner_ass_product.setEnabled(true);
@@ -394,8 +395,8 @@ public class AssociateAProductActivity extends BaseActivity {
                 linear_spinner_shop_ctegory.setVisibility(View.GONE);
                 linear_spinner_product_ctegory.setVisibility(View.GONE);
                 linear_spinner_shop_product.setVisibility(View.GONE);
-                tv_add_associate_product.setText("Update Associated Product");
-                setHeader("Update Associated Product", "");
+                tv_add_associate_product.setText(getString(R.string.header_update_associated_product));
+                setHeader(getString(R.string.header_update_associated_product), "");
                 String SKU_ID = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.SKU_ID);
                 String ENGLISH_NAME = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.ENGLISH_NAME);
                 String HINDI_NAME = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.HINDI_NAME);

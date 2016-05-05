@@ -174,7 +174,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:padding="@dimen/dp_10"
-                android:text="nbdashd hdshoihidooid djqwidjhdioqwoidwqdoiqwd o data"
+                android:text=""
                 android:textColor="@color/color_base"
                 android:textSize="@dimen/sp_20"
                 android:visibility="gone" />

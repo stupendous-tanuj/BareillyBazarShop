@@ -8,14 +8,10 @@ import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.activity.BaseActivity;
-import com.app.bareillybazarshop.activity.DeliveryPersonProfileActivity;
 import com.app.bareillybazarshop.activity.HomeActivity;
 import com.app.bareillybazarshop.api.output.CommonResponse;
-import com.app.bareillybazarshop.api.output.DeliveryLocation;
-import com.app.bareillybazarshop.api.output.DeliveryPerson;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.ShopOperationalTime;
-import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.listner.IDialogListener;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;

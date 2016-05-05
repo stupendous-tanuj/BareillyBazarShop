@@ -7,20 +7,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.app.bareillybazarshop.R;
-import com.app.bareillybazarshop.adapter.AssociatedDeliveryLocationAdapter;
-import com.app.bareillybazarshop.api.output.AssociatedShopId;
-import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.CommonResponse;
-import com.app.bareillybazarshop.api.output.DeliveryLocation;
-import com.app.bareillybazarshop.api.output.DeliveryLocationResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
-import com.app.bareillybazarshop.api.output.Product;
-import com.app.bareillybazarshop.api.output.ProductCategory;
-import com.app.bareillybazarshop.api.output.ProductCategoryResponse;
-import com.app.bareillybazarshop.api.output.ProductResponse;
-import com.app.bareillybazarshop.api.output.ShopCategory;
-import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -28,7 +18,6 @@ import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
-
 
 import java.util.ArrayList;
 import java.util.List;

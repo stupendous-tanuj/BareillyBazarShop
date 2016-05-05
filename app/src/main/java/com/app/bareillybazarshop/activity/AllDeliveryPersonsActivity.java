@@ -8,8 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.adapter.AssociatedShopAdapter;
@@ -18,10 +17,14 @@ import com.app.bareillybazarshop.api.output.AssociatedShopsResponse;
 import com.app.bareillybazarshop.api.output.DeliveryPerson;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
+import com.app.bareillybazarshop.api.output.OrderDetail;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AllDeliveryPersonsActivity extends BaseActivity {
@@ -32,6 +35,8 @@ public class AllDeliveryPersonsActivity extends BaseActivity {
     private Spinner spinner_deliveryPersons;
     LinearLayout ll_deliveryPersons;
     String deliveryPersonValue = "ALL";
+    private TextView no_data_available;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class AllDeliveryPersonsActivity extends BaseActivity {
         findViewById(R.id.iv_add_ass_deleivery_person).setOnClickListener(this);
         spinner_deliveryPersons = (Spinner) findViewById(R.id.spinner_deliveryPersons);
         ll_deliveryPersons = (LinearLayout) findViewById(R.id.ll_deliveryPersons);
+        no_data_available = (TextView) findViewById(R.id.no_data_available);
     }
 
     @Override
@@ -64,6 +70,18 @@ public class AllDeliveryPersonsActivity extends BaseActivity {
         recycleView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
+    }
+
+    private void setVisibleUI(List<AssociatedShop> associatedShop) {
+        if (associatedShop == null || associatedShop.size() == 0) {
+            recycleView.setVisibility(View.GONE);
+            no_data_available.setVisibility(View.VISIBLE);
+            no_data_available.setText(getString(R.string.msg_No_Shop_Found));
+        } else {
+            recycleView.setVisibility(View.VISIBLE);
+            no_data_available.setVisibility(View.GONE);
+            setAdapterData(associatedShop);
+        }
     }
 
 
@@ -99,7 +117,7 @@ public class AllDeliveryPersonsActivity extends BaseActivity {
             @Override
             public void onSuccess(AssociatedShopsResponse result) {
                 hideProgressBar();
-                setAdapterData(result.getAssociatedShops());
+                setVisibleUI(result.getAssociatedShops());
             }
 
             @Override

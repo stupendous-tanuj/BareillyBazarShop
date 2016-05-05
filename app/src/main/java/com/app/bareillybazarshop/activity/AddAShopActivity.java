@@ -10,7 +10,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.app.bareillybazarshop.R;
+import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.DeliveryMethod;
+import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.PaymentMethod;
 import com.app.bareillybazarshop.api.output.ShopProfile;
 import com.app.bareillybazarshop.api.output.ShopReferenceDataResponse;
@@ -21,9 +24,7 @@ import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
-import com.app.bareillybazarshop.R;
-import com.app.bareillybazarshop.api.output.CommonResponse;
-import com.app.bareillybazarshop.api.output.ErrorObject;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -8,21 +8,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.adapter.AssociatedDeliveryLocationAdapter;
 import com.app.bareillybazarshop.api.output.AssociatedShopId;
 import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
-import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.DeliveryLocation;
 import com.app.bareillybazarshop.api.output.DeliveryLocationResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
-import com.app.bareillybazarshop.api.output.Product;
-import com.app.bareillybazarshop.api.output.ProductCategory;
-import com.app.bareillybazarshop.api.output.ProductCategoryResponse;
-import com.app.bareillybazarshop.api.output.ProductResponse;
-import com.app.bareillybazarshop.api.output.ShopCategory;
-import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
+import com.app.bareillybazarshop.api.output.OrderDetail;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -30,7 +25,6 @@ import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +38,7 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
     LinearLayout ll_shopId;
     String shopIdValue = "";
     String USER_TYPE = "";
+    private TextView no_data_available;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +53,7 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
 
     private void setUI() {
         recycleView = (RecyclerView) findViewById(R.id.recycle_view_associated_delivery_locations);
-
+        no_data_available = (TextView) findViewById(R.id.no_data_available);
         findViewById(R.id.iv_associate_delivery_location).setOnClickListener(this);
         spinner_shopId = (Spinner) findViewById(R.id.spinner_shopId);
         ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
@@ -86,6 +81,19 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
     }
+
+    private void setVisibleUI(List<DeliveryLocation> deliveryLocation) {
+        if (deliveryLocation == null || deliveryLocation.size() == 0) {
+            recycleView.setVisibility(View.GONE);
+            no_data_available.setVisibility(View.VISIBLE);
+            no_data_available.setText(getString(R.string.msg_No_Delivery_Location_Found));
+        } else {
+            recycleView.setVisibility(View.VISIBLE);
+            no_data_available.setVisibility(View.GONE);
+            setAdapterData(deliveryLocation);
+        }
+    }
+
 
     private void setShopIdSpinner(List<AssociatedShopId> associatedShopId)
     {
@@ -134,7 +142,7 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
             shopIdValue = PreferenceKeeper.getInstance().getUserId();
         }
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, "Shop ID")) {
+        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID))) {
             return;
         }
 
@@ -143,7 +151,7 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
             @Override
             public void onSuccess(DeliveryLocationResponse result) {
                 hideProgressBar();
-                setAdapterData(result.getDeliveryLocations());
+                setVisibleUI(result.getDeliveryLocations());
             }
 
             @Override
