@@ -52,87 +52,76 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/network/AppRequestBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="345" column="57" selection-start-line="345" selection-start-column="57" selection-end-line="345" selection-end-column="57" />
+              <caret line="289" column="5" selection-start-line="281" selection-start-column="4" selection-end-line="289" selection-end-column="5" />
               <folding>
+                <element signature="e#6533#6549#0" expanded="true" />
+                <element signature="e#9675#9691#0" expanded="true" />
+                <element signature="e#12790#12806#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GcmIdGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIdGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+              <folding>
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1284#1285#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsyncTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://F:/adt-bundle-windows-x86-20130522/adt-bundle-windows-x86-20130522/sdk/sources/android-22/android/os/AsyncTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="537" column="53" selection-start-line="537" selection-start-column="53" selection-end-line="537" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#26748#0" expanded="false" />
                 <element signature="imports" expanded="false" />
+                <element signature="e#9304#9314#0" expanded="false" />
+                <element signature="e#10505#10515#0" expanded="false" />
+                <element signature="e#10632#10869#0" expanded="false" />
+                <element signature="e#10868#10869#0" expanded="false" />
+                <element signature="e#11933#11934#0" expanded="false" />
+                <element signature="e#11972#11973#0" expanded="false" />
+                <element signature="e#12125#12460#0" expanded="false" />
+                <element signature="e#12459#12460#0" expanded="false" />
+                <element signature="e#13713#13714#0" expanded="false" />
+                <element signature="e#13743#13744#0" expanded="false" />
+                <element signature="e#16100#16101#0" expanded="false" />
+                <element signature="e#16129#16130#0" expanded="false" />
+                <element signature="e#17098#17099#0" expanded="false" />
+                <element signature="e#17137#17138#0" expanded="false" />
+                <element signature="e#24571#24572#0" expanded="false" />
+                <element signature="e#24621#24622#0" expanded="false" />
+                <element signature="e#25695#25696#0" expanded="false" />
+                <element signature="e#25748#25749#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_update_order_detail.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_update_order_detail.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1724138">
-              <caret line="462" column="33" selection-start-line="462" selection-start-column="33" selection-end-line="462" selection-end-column="63" />
-              <folding>
-                <element signature="e#19706#19741#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_add_ashop.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_ashop.xml">
+      <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/SplashActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="47" selection-start-line="43" selection-start-column="20" selection-end-line="45" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.185185">
-              <caret line="287" column="18" selection-start-line="287" selection-start-column="18" selection-end-line="287" selection-end-column="18" />
+              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateOrderDetailActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/UpdateOrderDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39465874">
-              <caret line="223" column="63" selection-start-line="223" selection-start-column="63" selection-end-line="223" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_home.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="177" column="18" selection-start-line="177" selection-start-column="18" selection-end-line="192" selection-end-column="30" />
+              <caret line="205" column="0" selection-start-line="193" selection-start-column="8" selection-end-line="205" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/utils/DialogUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="179" column="98" selection-start-line="179" selection-start-column="11" selection-end-line="179" selection-end-column="98" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#12438#12439#0" expanded="false" />
-                <element signature="e#12494#12495#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -140,10 +129,22 @@
       <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="209" column="49" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
+            <state vertical-scroll-proportion="-6.206897">
+              <caret line="115" column="22" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
               <folding>
-                <element signature="e#8354#8392#0" expanded="true" />
+                <element signature="e#4379#4415#0" expanded="true" />
+                <element signature="e#5139#5172#0" expanded="true" />
+                <element signature="e#5789#5826#0" expanded="true" />
+                <element signature="e#5926#5959#0" expanded="true" />
+                <element signature="e#7347#7380#0" expanded="true" />
+                <element signature="e#8439#8477#0" expanded="true" />
+                <element signature="e#10146#10179#0" expanded="true" />
+                <element signature="e#10349#10382#0" expanded="true" />
+                <element signature="e#10618#10651#0" expanded="true" />
+                <element signature="e#11307#11340#0" expanded="true" />
+                <element signature="e#12968#13011#0" expanded="true" />
+                <element signature="e#18920#18951#0" expanded="true" />
+                <element signature="e#18953#18985#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,13 +154,22 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/HomeAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+              <caret line="63" column="102" selection-start-line="62" selection-start-column="16" selection-end-line="63" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GcmIntentService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIntentService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6973294">
+              <caret line="103" column="77" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="77" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2980#2981#0" expanded="false" />
-                <element signature="e#3022#3023#0" expanded="false" />
-                <element signature="e#3069#3070#0" expanded="false" />
-                <element signature="e#3124#3125#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1600#1643#0" expanded="true" />
+                <element signature="e#1799#1842#0" expanded="true" />
+                <element signature="e#2823#2866#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,10 +179,18 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/constant/AppConstant.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestGcmBroadcastReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/TestGcmBroadcastReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2409,12 +2427,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/AddADeliveryLocationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/api/output/ShopProfile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/AddAShopActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_ashop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_shop_operational_time.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/api/output/ShopOperationalTime.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_shop_operational_time.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/ShopOperationalTimeAdapter.java" />
@@ -2429,7 +2441,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/api/output/UserMessageResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_user_messages.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/include_home_left_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/UserMessagesAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_user_messages.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
@@ -2454,12 +2465,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/AssociatedDeliveryPersonActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/ShopKeeperProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/ViewShopOperationalTimeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/network/AppRequestBuilder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/utils/DialogUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_update_order_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/UpdateOrderDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/TestGcmBroadcastReceiver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIdGenerator.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/utils/PreferenceKeeper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/network/AppRequestBuilder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/SplashActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIntentService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/constant/AppConstant.java" />
       </list>
     </option>
   </component>
@@ -2515,6 +2533,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BareillyBazarShop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="raw" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2532,6 +2572,50 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bareillybazarshop" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BareillyBazarShop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bareillybazarshop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notification" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BareillyBazarShop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bareillybazarshop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="constant" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2554,6 +2638,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BareillyBazarShop" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2766,7 +2864,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2780,13 +2878,13 @@
       <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32993197" sideWeight="0.49546143" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32984293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2730711" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23146747" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -2831,106 +2929,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
-          <folding>
-            <element signature="e#1437#1455#0" expanded="false" />
-            <element signature="e#1593#1611#0" expanded="false" />
-            <element signature="e#1931#1949#0" expanded="false" />
-            <element signature="e#2048#2066#0" expanded="false" />
-            <element signature="e#2291#2309#0" expanded="false" />
-            <element signature="e#2542#2560#0" expanded="false" />
-            <element signature="e#2786#2804#0" expanded="false" />
-            <element signature="e#3037#3055#0" expanded="false" />
-            <element signature="e#3295#3313#0" expanded="false" />
-            <element signature="e#3546#3564#0" expanded="false" />
-            <element signature="e#3797#3815#0" expanded="false" />
-            <element signature="e#4047#4065#0" expanded="false" />
-            <element signature="e#4300#4318#0" expanded="false" />
-            <element signature="e#4557#4575#0" expanded="false" />
-            <element signature="e#4808#4826#0" expanded="false" />
-            <element signature="e#5062#5080#0" expanded="false" />
-            <element signature="e#5310#5328#0" expanded="false" />
-            <element signature="e#5562#5607#0" expanded="false" />
-            <element signature="e#5881#5921#0" expanded="false" />
-            <element signature="e#6202#6242#0" expanded="false" />
-            <element signature="e#6517#6558#0" expanded="false" />
-            <element signature="e#6833#6875#0" expanded="false" />
-            <element signature="e#7143#7177#0" expanded="false" />
-            <element signature="e#7451#7491#0" expanded="false" />
-            <element signature="e#7759#7792#0" expanded="false" />
-            <element signature="e#7948#7988#0" expanded="false" />
-            <element signature="e#8268#8315#0" expanded="false" />
-            <element signature="e#8601#8647#0" expanded="false" />
-            <element signature="e#8931#8977#0" expanded="false" />
-            <element signature="e#9264#9318#0" expanded="false" />
-            <element signature="e#9546#9600#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/UserMessagesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7586207">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/api/output/ViewAvailableProductResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_associated_shops.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.931034">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#637#651#0" expanded="true" />
-            <element signature="e#747#761#0" expanded="true" />
-            <element signature="e#1539#1553#0" expanded="true" />
-            <element signature="e#1584#1598#0" expanded="true" />
-            <element signature="e#1724#1738#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_messages.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.931034">
-          <caret line="54" column="0" selection-start-line="44" selection-start-column="4" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="e#775#788#0" expanded="true" />
-            <element signature="e#1086#1100#0" expanded="true" />
-            <element signature="e#1130#1144#0" expanded="true" />
-            <element signature="e#1170#1193#0" expanded="true" />
-            <element signature="e#1726#1740#0" expanded="true" />
-            <element signature="e#1836#1850#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_available_product.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.275862">
@@ -3085,6 +3083,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3092,6 +3091,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="318" column="60" selection-start-line="318" selection-start-column="60" selection-end-line="318" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3107,6 +3107,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3114,6 +3115,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3121,6 +3123,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding>
+            <element signature="e#7015#7048#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3128,6 +3133,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding>
+            <element signature="e#5831#5872#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3135,6 +3143,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="491" column="0" selection-start-line="491" selection-start-column="0" selection-end-line="491" selection-end-column="0" />
+          <folding>
+            <element signature="e#8476#8509#0" expanded="false" />
+            <element signature="e#9165#9198#0" expanded="false" />
+            <element signature="e#17761#17807#0" expanded="false" />
+            <element signature="e#17836#17882#0" expanded="false" />
+            <element signature="e#18402#18454#0" expanded="false" />
+            <element signature="e#18483#18535#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3142,6 +3158,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+          <folding>
+            <element signature="e#5714#5747#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3149,6 +3168,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
+          <folding>
+            <element signature="e#3496#3544#0" expanded="false" />
+            <element signature="e#5676#5709#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3156,6 +3179,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="62" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3163,6 +3187,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3170,6 +3195,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3177,6 +3203,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3184,6 +3211,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3191,13 +3219,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3205,6 +3227,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3212,6 +3235,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+          <folding>
+            <element signature="e#2714#2760#0" expanded="false" />
+            <element signature="e#13587#13634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3219,13 +3246,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/SplashActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3233,6 +3254,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3247,6 +3269,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="57" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3254,6 +3279,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3261,6 +3287,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+          <folding>
+            <element signature="e#8380#8413#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3286,40 +3315,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="132" column="5" selection-start-line="121" selection-start-column="4" selection-end-line="132" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/constant/AppConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/HomeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2980#2981#0" expanded="false" />
-            <element signature="e#3022#3023#0" expanded="false" />
-            <element signature="e#3069#3070#0" expanded="false" />
-            <element signature="e#3124#3125#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/network/AppRequestBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="345" column="57" selection-start-line="345" selection-start-column="57" selection-end-line="345" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3378,22 +3374,156 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/HomeActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/UpdateOrderDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="209" column="49" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/utils/PreferenceKeeper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <element signature="e#8354#8392#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/UpdateOrderDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39465874">
-          <caret line="223" column="63" selection-start-line="223" selection-start-column="63" selection-end-line="223" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="20" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/adt-bundle-windows-x86-20130522/adt-bundle-windows-x86-20130522/sdk/sources/android-22/android/os/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="537" column="53" selection-start-line="537" selection-start-column="53" selection-end-line="537" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#26748#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#9304#9314#0" expanded="false" />
+            <element signature="e#10505#10515#0" expanded="false" />
+            <element signature="e#10632#10869#0" expanded="false" />
+            <element signature="e#10868#10869#0" expanded="false" />
+            <element signature="e#11933#11934#0" expanded="false" />
+            <element signature="e#11972#11973#0" expanded="false" />
+            <element signature="e#12125#12460#0" expanded="false" />
+            <element signature="e#12459#12460#0" expanded="false" />
+            <element signature="e#13713#13714#0" expanded="false" />
+            <element signature="e#13743#13744#0" expanded="false" />
+            <element signature="e#16100#16101#0" expanded="false" />
+            <element signature="e#16129#16130#0" expanded="false" />
+            <element signature="e#17098#17099#0" expanded="false" />
+            <element signature="e#17137#17138#0" expanded="false" />
+            <element signature="e#24571#24572#0" expanded="false" />
+            <element signature="e#24621#24622#0" expanded="false" />
+            <element signature="e#25695#25696#0" expanded="false" />
+            <element signature="e#25748#25749#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/TestGcmBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/adapter/HomeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="102" selection-start-line="62" selection-start-column="16" selection-end-line="63" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIdGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+          <folding>
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/network/AppRequestBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="289" column="5" selection-start-line="281" selection-start-column="4" selection-end-line="289" selection-end-column="5" />
+          <folding>
+            <element signature="e#6533#6549#0" expanded="true" />
+            <element signature="e#9675#9691#0" expanded="true" />
+            <element signature="e#12790#12806#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.206897">
+          <caret line="115" column="22" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
+          <folding>
+            <element signature="e#4379#4415#0" expanded="true" />
+            <element signature="e#5139#5172#0" expanded="true" />
+            <element signature="e#5789#5826#0" expanded="true" />
+            <element signature="e#5926#5959#0" expanded="true" />
+            <element signature="e#7347#7380#0" expanded="true" />
+            <element signature="e#8439#8477#0" expanded="true" />
+            <element signature="e#10146#10179#0" expanded="true" />
+            <element signature="e#10349#10382#0" expanded="true" />
+            <element signature="e#10618#10651#0" expanded="true" />
+            <element signature="e#11307#11340#0" expanded="true" />
+            <element signature="e#12968#13011#0" expanded="true" />
+            <element signature="e#18920#18951#0" expanded="true" />
+            <element signature="e#18953#18985#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/activity/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/constant/AppConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="205" column="0" selection-start-line="193" selection-start-column="8" selection-end-line="205" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/app/bareillybazarshop/notification/GcmIntentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6973294">
+          <caret line="103" column="77" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1600#1643#0" expanded="true" />
+            <element signature="e#1799#1842#0" expanded="true" />
+            <element signature="e#2823#2866#0" expanded="true" />
           </folding>
         </state>
       </provider>

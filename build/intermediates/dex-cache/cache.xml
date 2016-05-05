@@ -2,34 +2,6 @@
 <items version="2" >
 
     <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-9e7bb4397189d5f2508e58c1c477ceba24304618.jar" />
-    </item>
-    <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-84aac6255bf5d80f64fd06492c703eca9c355266.jar" />
-    </item>
-    <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-f146c1e4e3eb52f4ad2575f2bf1cf81ece2053a8.jar" />
-    </item>
-    <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="7d2525cba8ed61fff102977caed964fc22061e34">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-96d725f6fdd86323ee366c988d9ea5bd0da857b6.jar" />
-    </item>
-    <item
         jar="E:\Github\BareillyBazarShop\app\libs\volley.jar"
         jumboMode="false"
         revision="21.0.0"
@@ -44,25 +16,18 @@
         <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\library-2.4.0-c8234c6c40d10c625423de7b7807ded070eef281.jar" />
     </item>
     <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.3.0\jars\classes.jar"
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="345a1b5cf5b144ce18ba6962bc66a7e2f26c1c1b">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-f660bd2a8044e4202e38cd9b00dbf5044dc96889.jar" />
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-05de3750906c5b674c92e541b5b9c781812b8ac4.jar" />
     </item>
     <item
-        jar="F:\adt-bundle-windows-x86-20130522\adt-bundle-windows-x86-20130522\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.0\jars\classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-304e27374e945f2c147bc0a677201af2189b6673.jar" />
-    </item>
-    <item
-        jar="C:\Users\TANUJ\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\gson-2.2.4-c1e4202d17a8f078c2cae71f77e396842d3dea2e.jar" />
+        sha1="7d2525cba8ed61fff102977caed964fc22061e34">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-96d725f6fdd86323ee366c988d9ea5bd0da857b6.jar" />
     </item>
     <item
         jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.3.0\jars\classes.jar"
@@ -70,6 +35,27 @@
         revision="21.0.0"
         sha1="71eda10e33212e44245524b5087366ff8d805825">
         <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-5afb8584daa7083a6fd770f43cef71ce6d32d623.jar" />
+    </item>
+    <item
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\BareillyBazarShop\universalimageloaderlibrary\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="67adc51bdb5c7cda397f8bef4e4e1163cec36dd1">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-68b55f419ae4a1ed0cb8182e7c9f31de430baec3.jar" />
+    </item>
+    <item
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="3abb4b88f5a8a0584a9b01d3170d7165f12f8588">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-84aac6255bf5d80f64fd06492c703eca9c355266.jar" />
+    </item>
+    <item
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.afollestad\material-dialogs\0.7.8.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="0b3bbe3dc415a3fe112e7c28de53fd194fe4416e">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-1022e95e4844d0e2e3ecd3a5aba2bd19641f8698.jar" />
     </item>
     <item
         jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.3.0\jars\classes.jar"
@@ -86,11 +72,11 @@
         <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-5eec8a469ced8717649062eef8be1928e9527b46.jar" />
     </item>
     <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.afollestad\material-dialogs\0.7.8.1\jars\classes.jar"
+        jar="F:\adt-bundle-windows-x86-20130522\adt-bundle-windows-x86-20130522\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="0b3bbe3dc415a3fe112e7c28de53fd194fe4416e">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-1022e95e4844d0e2e3ecd3a5aba2bd19641f8698.jar" />
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-304e27374e945f2c147bc0a677201af2189b6673.jar" />
     </item>
     <item
         jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.3.0\jars\classes.jar"
@@ -100,18 +86,32 @@
         <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-e1c127ab9cc1ba06768c4caecf1bd902a18da447.jar" />
     </item>
     <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.3.0\jars\classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-05de3750906c5b674c92e541b5b9c781812b8ac4.jar" />
+        sha1="345a1b5cf5b144ce18ba6962bc66a7e2f26c1c1b">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-f660bd2a8044e4202e38cd9b00dbf5044dc96889.jar" />
     </item>
     <item
-        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\BareillyBazarShop\universalimageloaderlibrary\unspecified\jars\classes.jar"
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="6408da206ee6b01e379890e50da429b2edf4fbba">
-        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-68b55f419ae4a1ed0cb8182e7c9f31de430baec3.jar" />
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-f146c1e4e3eb52f4ad2575f2bf1cf81ece2053a8.jar" />
+    </item>
+    <item
+        jar="C:\Users\TANUJ\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\gson-2.2.4-c1e4202d17a8f078c2cae71f77e396842d3dea2e.jar" />
+    </item>
+    <item
+        jar="E:\Github\BareillyBazarShop\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="E:\Github\BareillyBazarShop\app\build\intermediates\pre-dexed\debug\classes-9e7bb4397189d5f2508e58c1c477ceba24304618.jar" />
     </item>
 
 </items>

@@ -11,7 +11,8 @@ public class AppConstant {
 
     public static final String APPLICATION_ID = "ANDSH1001";
     public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    public static final String GCM_ID = "389845974615";
+    public static final String GCM_ID = "482103880273";
+    public static final int VIBRATE_TIME = 5000;
     public static final String COUNTRY = "India";
     public static final String DEFAULT_LOCALE = "en";
 

@@ -279,6 +279,16 @@ public class AppRequestBuilder {
         return request;
     }
 
+    public static AppHttpRequest updateGCMIdAPI(String GCMID,AppResponseListener<CommonResponse> appResponseListener) {
+        AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Update_GCMID.php", appResponseListener);
+        Map<String, String> map = new LinkedHashMap<String, String>();
+        setUserHeader(map);
+        map.put("userType", USER_TYPE);
+        map.put("GCMID", GCMID);
+        request.addParam("input", setRequestBody(map));
+        return request;
+    }
+
     public static AppHttpRequest associatedShopsAPI(String onlyShopId,AppResponseListener<AssociatedShopsResponse> appResponseListener) {
         AppHttpRequest request = AppHttpRequest.getPostRequest(BASE_URL + "/Fetch_Associated_Shops.php", appResponseListener);
         Map<String, String> map = new LinkedHashMap<>();

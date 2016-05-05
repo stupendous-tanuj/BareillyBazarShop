@@ -23,7 +23,6 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         setDeviceInfo();
-       // getGCMRegId();
         setHandler();
     }
 
@@ -64,12 +63,7 @@ public class SplashActivity extends BaseActivity {
         handler.postDelayed(runnable, SPLASH_TIME_OUT);
     }
 
-    private void getGCMRegId() {
-        GcmIdGenerator gcm = new GcmIdGenerator(SplashActivity.this);
-        if (AppUtil.checkPlayServices(this)) {
-            gcm.getGCMRegId();
-        }
-    }
+
 
     @Override
     public void onBackPressed() {

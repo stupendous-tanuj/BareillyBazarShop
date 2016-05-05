@@ -35,6 +35,7 @@ import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
+import com.app.bareillybazarshop.notification.GcmIdGenerator;
 import com.app.bareillybazarshop.utils.AppUtil;
 import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.Logger;
@@ -112,6 +113,7 @@ public class HomeActivity extends BaseActivity {
         getCurrentTime();
         verifyApplicationIDAPI();
         fetchMyOrderDetailApi();
+        getGCMRegId();
     }
 
     private void getCurrentTime() {
@@ -215,6 +217,13 @@ public class HomeActivity extends BaseActivity {
             recycleView.setVisibility(View.VISIBLE);
             no_data_available.setVisibility(View.GONE);
             setMyOrderAdapterData(carts);
+        }
+    }
+
+    private void getGCMRegId() {
+        GcmIdGenerator gcm = new GcmIdGenerator(HomeActivity.this);
+        if (AppUtil.checkPlayServices(this)) {
+            gcm.getGCMRegId();
         }
     }
 

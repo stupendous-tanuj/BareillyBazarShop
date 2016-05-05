@@ -49,6 +49,10 @@ public class PreferenceKeeper {
         return prefs.getString(AppConstant.PreferenceKeeperNames.FLAT_NUMBER, "");
     }
 
+    public void setGCMReg(String gcmId) {
+        prefs.edit().putString(AppConstant.PreferenceKeeperNames.GCM_REG_ID, gcmId).commit();
+    }
+
     public void setflatNumber(String flatNumber) {
         prefs.edit().putString(AppConstant.PreferenceKeeperNames.FLAT_NUMBER, flatNumber).commit();
     }
