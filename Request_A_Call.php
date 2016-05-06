@@ -10,7 +10,7 @@ $jsonRequest = json_decode( processRequest($_POST['input']), true);
 $applicationId = mysqli_real_escape_string($link,$jsonRequest['applicationId']);
 $userId = mysqli_real_escape_string($link,$jsonRequest['userId']); 
 $locale = mysqli_real_escape_string($link,$jsonRequest['locale']); 
-$shopId = mysqli_real_escape_string($link,$jsonRequest['shopId']); 
+$preferredTime = mysqli_real_escape_string($link,$jsonRequest['preferredTime']); 
 
 try {
 if($applicationId=="")
@@ -19,10 +19,10 @@ throw new Exception($applicationId_MISSING);
 if($userId=="")
 throw new Exception($userId_MISSING);
 
-if($shopId=="")
-throw new Exception($shopId_MISSING);
+if($preferredTime=="")
+throw new Exception($preferredTime_MISSING);
 
-$sql = "INSERT INTO `CustomerFavroiteShop` (`CustomerMobileNumber`, `ShopId`) VALUES ('".$userId."', '".$shopId."')";
+$sql = "INSERT INTO `CallRequest` (`CustomerMobileNumber`, `PreferredTime`) VALUES ('".$userId."', '".$preferredTime."')";
 
 
 //echo $sql;
@@ -30,10 +30,10 @@ $result=mysqli_query($link,$sql);
 	if(mysqli_affected_rows($link)==1){
 		$dataResult = array();
 		$dataResult['status']=1;
-		$dataResult['response']['successMessage']=$SHOP_FAVOURITE_SUCCESS;
+		$dataResult['response']['successMessage']=$REQUEST_A_CALL_SUCCESS;
 	}
 	else{
-	throw new Exception($SHOP_FAVOURITE_ERROR);
+	throw new Exception($REQUEST_A_CALL_ERROR);
 	}
 	echo processResponse($jsonRequest,json_encode($dataResult)); 
 }
@@ -41,7 +41,7 @@ $result=mysqli_query($link,$sql);
 catch(Exception $e) {
 	$data = array();
 	$data['status']=0;
-	$data['response']['errorCode']=$CUSTOMER_FAVOURITE_SHOP_SERVICE_ERROR_CODE;
+	$data['response']['errorCode']=$REQUEST_A_CALL_SERVICE_ERROR_CODE;
 	$data['response']['errorMessage']=$e->getMessage();
 	$data['response']['supportContactNumber']=fetchSupportContactNumber($link,$applicationId);
 	logAnError($link,'Contact_us', $_POST, $userId, json_encode($data), $e);
