@@ -17,7 +17,7 @@ if($userId=="")
 throw new Exception($userId_MISSING);
 
 
-		$query = "SELECT CustomerMobileNumber,CustomerName, PreferredTime FROM `CallRequest`,Customer WHERE (CallRequest.CustomerMobileNumber = Customer.CustomerMobileNumber)";
+		$query = "SELECT CustomerMobileNumber,CustomerName, PreferredTime, CallRequest.CreationTime FROM `CallRequest`,Customer WHERE (CallRequest.CustomerMobileNumber = Customer.CustomerMobileNumber)";
 	
 	$result=mysqli_query($link,$query);
 	$dataResult = array();
@@ -29,6 +29,7 @@ throw new Exception($userId_MISSING);
 			$dataRow = array();
 			$dataRow['customerMobileNumber']=$row['CustomerMobileNumber']." ".$row['CustomerName'];
 			$dataRow['preferredTime']=$row['PreferredTime'];
+			$dataRow['creationTime']=$row['CreationTime'];
 			$dataResult['response']['callRequest'][$i++]=$dataRow;
 		}
 	}
