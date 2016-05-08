@@ -44,7 +44,7 @@ public class AssociatedDeliveryLocationAdapter extends RecyclerView.Adapter<Recy
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
-        System.out.println("Test");
+
         final DeliveryLocation data = getItem(position);
         DeliveryLocationHolder holder = (DeliveryLocationHolder) viewHolder;
         setData(holder, data, position);

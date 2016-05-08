@@ -26,7 +26,6 @@ import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.Product;
 import com.app.bareillybazarshop.api.output.ProductCategory;
 import com.app.bareillybazarshop.api.output.ProductCategoryResponse;
-import com.app.bareillybazarshop.api.output.ProductResponse;
 import com.app.bareillybazarshop.api.output.ShopCategory;
 import com.app.bareillybazarshop.api.output.ShopCategoryResponse;
 import com.app.bareillybazarshop.api.output.ViewAvailableProductResponse;
@@ -81,7 +80,8 @@ public class AssociateAProductActivity extends BaseActivity {
         getIntentData();
     }
 
-    public PopupWindow popupWindowserch(List<String> categories) {
+    public PopupWindow popupWindowserch(final List<Product> product, final List<String> categories) {
+
         PopupWindow popupWindow = new PopupWindow(this);
 
         LayoutInflater order_list_LayoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -90,12 +90,23 @@ public class AssociateAProductActivity extends BaseActivity {
         final ListView listview_ssocite_product = (ListView) view.findViewById(R.id.list);
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_serch_product, R.id.tv_serch_product_name, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         listview_ssocite_product.setAdapter(adapter);
         // some other visual settings
         popupWindow.setFocusable(true);
         popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setContentView(view);
+
+        listview_ssocite_product.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                setProduct(product.get(pos));
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         tv_serch_product_name.addTextChangedListener(new TextWatcher() {
 
@@ -143,6 +154,7 @@ public class AssociateAProductActivity extends BaseActivity {
         cbAvailable = (CheckBox) findViewById(R.id.cb_ass_product_add_availability);
         ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
         spinner_shopId = (Spinner) findViewById(R.id.spinner_shopId);
+
         if((USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE))) {
             ll_shopId.setVisibility(View.GONE);
         }
@@ -252,7 +264,7 @@ public class AssociateAProductActivity extends BaseActivity {
         spinner_ass_shop_ctegory.setAdapter(dataAdapter);
         spinner_ass_shop_ctegory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                String shopCN = categories.get(pos);
+                shopCN = categories.get(pos);
                 fetchAllProductCategoryApi(shopCN);
             }
 
@@ -268,7 +280,7 @@ public class AssociateAProductActivity extends BaseActivity {
             @Override
             public void onSuccess(ProductCategoryResponse result) {
                 hideProgressBar();
-                setSpinnerProductCtegory(shopCN, result.getProductCategories());
+                setSpinnerProductCategory(shopCN, result.getProductCategories());
             }
 
             @Override
@@ -279,8 +291,9 @@ public class AssociateAProductActivity extends BaseActivity {
         AppRestClient.getClient().sendRequest(this, request, TAG);
     }
 
-
-    private void setSpinnerProductCtegory(final String shopCN, List<ProductCategory> productC) {
+    String productCN = "";
+    String shopCN = "";
+    private void setSpinnerProductCategory(final String shopCN, List<ProductCategory> productC) {
         if (productC.size() == 0) {
             linear_spinner_product_ctegory.setVisibility(View.GONE);
             linear_spinner_shop_product.setVisibility(View.GONE);
@@ -302,8 +315,9 @@ public class AssociateAProductActivity extends BaseActivity {
         spinner_ass_product_ctegory.setAdapter(dataAdapter);
         spinner_ass_product_ctegory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                String productCN = categories.get(pos);
-                fetchAvailableProductApi(shopCN, productCN);
+                productCN = categories.get(pos);
+                if (!shopIdValue.equals(getString(R.string.please_select)))
+                fetchAvailableProductApi();
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -311,7 +325,13 @@ public class AssociateAProductActivity extends BaseActivity {
         });
     }
 
-    private void fetchAvailableProductApi(String shopCN, String productCN) {
+    private void fetchAvailableProductApi() {
+
+
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
+
         showProgressBar();
         AppHttpRequest request = AppRequestBuilder.viewAvailableProductAPI(shopIdValue, shopCN, productCN, new AppResponseListener<ViewAvailableProductResponse>(ViewAvailableProductResponse.class, this) {
             @Override
@@ -347,9 +367,9 @@ public class AssociateAProductActivity extends BaseActivity {
         final List<String> categories = new ArrayList<>();
         for (Product method : products) {
             if(method.getProductNameHindi().equals("") || method.getProductNameHindi().equals(null))
-            categories.add(method.getProductNameEnglish());
+            categories.add(method.getProductNameEnglish() + ", " + method.getProductPriceForUnits()+ " "+ method.getProductOrderUnit());
             else
-            categories.add(method.getProductNameEnglish() + ", " + method.getProductNameHindi());
+            categories.add(method.getProductNameEnglish() + ", " + method.getProductNameHindi()+ " " + method.getProductPriceForUnits()+ ", " + method.getProductOrderUnit());
         }
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -359,12 +379,11 @@ public class AssociateAProductActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 setProduct(products.get(pos));
             }
-
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        popupWindowserch = popupWindowserch(categories);
+        popupWindowserch = popupWindowserch(products, categories);
         /// serch product
         //adapter = new ArrayAdapter<String>(this, R.layout.list_serch_product, R.id.tv_serch_product_name, categories);
         //listview_ssocite_product.setAdapter(adapter);
@@ -390,7 +409,7 @@ public class AssociateAProductActivity extends BaseActivity {
                 spinner_ass_shop_ctegory.setEnabled(true);
                 spinner_ass_product_ctegory.setEnabled(true);
                 spinner_ass_product.setEnabled(true);
-                ll_shopId.setVisibility(View.VISIBLE);
+                //ll_shopId.setVisibility(View.VISIBLE);
             } else {
                 linear_spinner_shop_ctegory.setVisibility(View.GONE);
                 linear_spinner_product_ctegory.setVisibility(View.GONE);
@@ -438,6 +457,10 @@ public class AssociateAProductActivity extends BaseActivity {
 
     private void addAssociatedProductAPI() {
 
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
+
         String sku = tv_ass_product_add_sku.getText().toString();
         String productAvailability = cbAvailable.isChecked() == true ? "1" : "0";
         String price = et_ass_product_add_price.getText().toString().trim();
@@ -463,6 +486,10 @@ public class AssociateAProductActivity extends BaseActivity {
     }
 
     private void updateAddAssociatedProductAPI() {
+
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
 
         String sku = tv_ass_product_add_sku.getText().toString();
         String productAvailability = cbAvailable.isChecked() == true ? "1" : "0";

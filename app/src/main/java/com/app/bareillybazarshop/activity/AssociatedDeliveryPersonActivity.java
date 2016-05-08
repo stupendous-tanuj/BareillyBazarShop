@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class AssociatedDeliveryPersonActivity extends BaseActivity {
     String shopIdValue = "ALL";
     String USER_TYPE = "";
     private TextView no_data_available;
+    private ImageView iv_add_ass_deleivery_person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,8 @@ public class AssociatedDeliveryPersonActivity extends BaseActivity {
     private void setUI() {
         recycleView = (RecyclerView) findViewById(R.id.recycle_view_associate_delivery_person);
         no_data_available = (TextView) findViewById(R.id.no_data_available);
-        findViewById(R.id.iv_add_ass_deleivery_person).setOnClickListener(this);
+        iv_add_ass_deleivery_person = (ImageView) findViewById(R.id.iv_add_ass_deleivery_person);
+        iv_add_ass_deleivery_person.setOnClickListener(this);
         spinner_shopId = (Spinner) findViewById(R.id.spinner_shopId);
         ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
         if((USER_TYPE.equals(AppConstant.UserType.DELIVERY_PERSON_TYPE)) || (USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE))) {
@@ -65,6 +68,9 @@ public class AssociatedDeliveryPersonActivity extends BaseActivity {
             ll_shopId.setVisibility(View.VISIBLE);
             fetchShopIdAPI();
         }
+
+        if(!USER_TYPE.equals(AppConstant.UserType.SELLER_HUB_TYPE))
+            iv_add_ass_deleivery_person.setVisibility(View.GONE);
     }
 
     @Override

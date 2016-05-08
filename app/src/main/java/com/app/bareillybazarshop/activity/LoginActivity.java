@@ -35,6 +35,7 @@ public class LoginActivity extends BaseActivity {
         setHeader(getString(R.string.header_user_login), "");
         setUI();
         setUIListener();
+
     }
 
     private void setUI() {
@@ -80,10 +81,10 @@ public class LoginActivity extends BaseActivity {
     private void loginAPI() {
         final String userId = et_login_shopid.getText().toString().trim();
         final String password = et_login_password.getText().toString().trim();
-        if (!DialogUtils.isLoginVerification(this, userId, password)) {
+        if (!DialogUtils.isLoginVerification(this, userId, password, userType)) {
             return;
         }
-
+        PreferenceKeeper.getInstance().clearData();
         showProgressBar(findViewById(R.id.tv_login_login));
         AppHttpRequest request = AppRequestBuilder.loginAPI(userId, userType, password, new AppResponseListener<LoginResponse>(LoginResponse.class, this) {
             @Override
@@ -95,6 +96,7 @@ public class LoginActivity extends BaseActivity {
                     PreferenceKeeper.getInstance().setUserId(userId);
                     PreferenceKeeper.getInstance().setUserType(userType);
                     PreferenceKeeper.getInstance().setLocale(AppConstant.DEFAULT_LOCALE);
+                    PreferenceKeeper.getInstance().setUserProfilePicturePath("ProfilePicturePath");
 
                 } else if (result.getFirstLogin().equals("0")) {
                     launchActivity(HomeActivity.class);
@@ -102,6 +104,7 @@ public class LoginActivity extends BaseActivity {
                     PreferenceKeeper.getInstance().setUserId(userId);
                     PreferenceKeeper.getInstance().setUserType(userType);
                     PreferenceKeeper.getInstance().setLocale(AppConstant.DEFAULT_LOCALE);
+                    PreferenceKeeper.getInstance().setUserProfilePicturePath("ProfilePicturePath");
                 }
 
                 hideProgressBar(findViewById(R.id.tv_login_login));

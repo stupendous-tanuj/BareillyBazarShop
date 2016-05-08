@@ -26,6 +26,7 @@ public class GcmIntentService extends IntentService {
     private NotificationCompat.Builder notificationBuilder = null;
     private boolean isChatMode = false;
     private String channelId;
+    private static int i = 0;
 
     public GcmIntentService() {
         super("GcmIntentService");
@@ -89,14 +90,12 @@ public class GcmIntentService extends IntentService {
         // Build intent for notification content
         PendingIntent pendingIntent;
         Bundle eventBundle = new Bundle();
-        eventBundle.putString("eventType", type);
         eventBundle.putString(AppConstant.BUNDLE_KEY.ORDER_ID, orderId);
         eventBundle.putString(AppConstant.BUNDLE_KEY.ORDER_STATUS, orderStatus);
         Intent intent = new Intent(this, UpdateOrderDetailActivity.class);
         intent.putExtras(eventBundle);
-        intent.setAction("ACTION");
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(this, i++ , intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo)

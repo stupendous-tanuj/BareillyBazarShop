@@ -4,8 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -37,9 +41,9 @@ import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.notification.GcmIdGenerator;
 import com.app.bareillybazarshop.utils.AppUtil;
-import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.Logger;
 import com.app.bareillybazarshop.utils.PreferenceKeeper;
+import com.app.bareillybazarshop.utils.RoundedImageView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -73,7 +77,6 @@ public class HomeActivity extends BaseActivity {
     LinearLayout linear_home_logout = null;
     LinearLayout linear_home_from_dte = null;
     LinearLayout linear_home_to_dte = null;
-    LinearLayout linear_user_messages = null;
     LinearLayout linear_home_my_orders = null;
     LinearLayout linear_home_associated_shops = null;
     LinearLayout linear_change_password = null;
@@ -86,6 +89,9 @@ public class HomeActivity extends BaseActivity {
     LinearLayout linear_home_all_delivery_person = null;
     LinearLayout linear_home_delivery_location = null;
     LinearLayout linear_home_addADeliveryLocation = null;
+    LinearLayout linear_home_associate_a_product = null;
+    LinearLayout linear_home_view_available_product = null;
+    LinearLayout linear_user_messages = null;
 
 
     private static DatePickerDialog.OnDateSetListener mDateListner;
@@ -98,6 +104,8 @@ public class HomeActivity extends BaseActivity {
     String USER_TYPE = "";
     String from = "";
     String to = "";
+    RoundedImageView iv_signup_profile;
+    private static int RESULT_LOAD_IMAGE = 1;
 
 
     @Override
@@ -112,8 +120,17 @@ public class HomeActivity extends BaseActivity {
         initDrawerToggle(); // set listener of drawer with toggle
         getCurrentTime();
         verifyApplicationIDAPI();
+        if (!shopIdValue.equals(getString(R.string.please_select)))
         fetchMyOrderDetailApi();
         getGCMRegId();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (!shopIdValue.equals(getString(R.string.please_select)))
+        fetchMyOrderDetailApi();
+
     }
 
     private void getCurrentTime() {
@@ -150,7 +167,7 @@ public class HomeActivity extends BaseActivity {
             return;
         }
 
-        if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals(""))) {
+        if (shopIdValue.equals(getString(R.string.please_select)) || (shopIdValue.equals(""))) {
             return;
         }
 
@@ -172,7 +189,7 @@ public class HomeActivity extends BaseActivity {
         AppRestClient.getClient().sendRequest(this, request, TAG);
     }
 
-    private void setDte(final TextView tv) {
+    private void setDate(final TextView tv) {
         showDatePickerDialog();
         mDateListner = new DatePickerDialog.OnDateSetListener() {
             //         "fromDate": "2016-02-14",
@@ -326,6 +343,7 @@ public class HomeActivity extends BaseActivity {
 
 
     private void initUI() {
+        iv_signup_profile = (RoundedImageView) findViewById(R.id.iv_signup_profile);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tv_from_dte_home = (TextView) findViewById(R.id.tv_from_dte_home);
         tv_to_dte_home = (TextView) findViewById(R.id.tv_to_dte_home);
@@ -359,7 +377,8 @@ public class HomeActivity extends BaseActivity {
         linear_home_addADeliveryLocation = (LinearLayout) findViewById(R.id.linear_home_addADeliveryLocation);
         linear_home_all_delivery_person = (LinearLayout) findViewById(R.id.linear_home_all_delivery_person);
         linear_user_messages = (LinearLayout) findViewById(R.id.linear_user_messages);
-
+        linear_home_associate_a_product = (LinearLayout) findViewById(R.id.linear_home_associate_a_product);
+        linear_home_view_available_product = (LinearLayout) findViewById(R.id.linear_home_view_available_product);
 
 
         //linear_home_associateAProductCategory = (LinearLayout) findViewById(R.id.linear_home_associateAProductCategory);
@@ -376,8 +395,6 @@ public class HomeActivity extends BaseActivity {
             ll_shopId.setVisibility(View.VISIBLE);
         }
 
-
-
         linear_bar_deliveryLocation = (LinearLayout) findViewById(R.id.linear_bar_deliveryLocation);
         linear_bar_deliveryPerson = (LinearLayout) findViewById(R.id.linear_bar_deliveryPerson);
         linear_bar_product = (LinearLayout) findViewById(R.id.linear_bar_product);
@@ -387,6 +404,7 @@ public class HomeActivity extends BaseActivity {
             linear_home_addAShop.setVisibility(View.GONE);
             linear_home_addADeliveryLocation.setVisibility(View.GONE);
             linear_home_all_delivery_person.setVisibility(View.GONE);
+            linear_user_messages.setVisibility(View.GONE);
         }
         else if(USER_TYPE.equals(AppConstant.UserType.SELLER_HUB_TYPE)) {
             linear_home_seller_hub_profile.setVisibility(View.GONE);
@@ -402,6 +420,9 @@ public class HomeActivity extends BaseActivity {
             linear_home_addAShop.setVisibility(View.GONE);
             linear_home_addADeliveryLocation.setVisibility(View.GONE);
             linear_home_all_delivery_person.setVisibility(View.GONE);
+            linear_home_associate_a_product.setVisibility(View.GONE);
+            linear_home_view_available_product.setVisibility(View.GONE);
+            linear_user_messages.setVisibility(View.GONE);
             //Bars
             linear_bar_deliveryLocation.setVisibility(View.GONE);
             linear_bar_deliveryPerson.setVisibility(View.GONE);
@@ -412,6 +433,10 @@ public class HomeActivity extends BaseActivity {
 
         tv_userId.setText(PreferenceKeeper.getInstance().getUserId());
         tv_userType.setText(PreferenceKeeper.getInstance().getUserType());
+        if(!PreferenceKeeper.getInstance().getUserProfilePicturePath().equals("ProfilePicturePath")) {
+            iv_signup_profile.setImageBitmap(BitmapFactory.decodeFile(PreferenceKeeper.getInstance().getUserProfilePicturePath()));
+        }
+
     }
 
     private void initDrawerToggle() {
@@ -463,6 +488,7 @@ public class HomeActivity extends BaseActivity {
         linear_home_delivery_location.setOnClickListener(this);
         linear_home_addADeliveryLocation.setOnClickListener(this);
         linear_user_messages.setOnClickListener(this);
+        iv_signup_profile.setOnClickListener(this);
     }
 
     @Override
@@ -514,10 +540,10 @@ public class HomeActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.linear_home_from_dte:
-                setDte(tv_from_dte_home);
+                setDate(tv_from_dte_home);
                 break;
             case R.id.linear_home_to_dte:
-                setDte(tv_to_dte_home);
+                setDate(tv_to_dte_home);
                 break;
             case R.id.linear_change_password:
                 launchActivity(ChangePasswordActivity.class);
@@ -546,9 +572,39 @@ public class HomeActivity extends BaseActivity {
             case R.id.linear_user_messages:
                 launchActivity(UserMessagesActivity.class);
                 break;
-
+            case R.id.iv_signup_profile:
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+                break;
         }
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            iv_signup_profile.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            PreferenceKeeper.getInstance().setUserProfilePicturePath(picturePath);
+
+        }
+
+
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

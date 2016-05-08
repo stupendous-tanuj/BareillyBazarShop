@@ -82,6 +82,14 @@ public class ViewShopOperationalTimeActivity extends BaseActivity {
         }
     }
 
+
+    @Override
+    public void onResume(){
+        super.onResume();
+            setUI();
+    }
+
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

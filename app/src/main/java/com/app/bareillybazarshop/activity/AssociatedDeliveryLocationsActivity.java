@@ -76,6 +76,13 @@ public class AssociatedDeliveryLocationsActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        setUI();
+    }
+
+
     private void setRecycler() {
         recycleView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);

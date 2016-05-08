@@ -1,6 +1,9 @@
 package com.app.bareillybazarshop.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,11 +14,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.app.bareillybazarshop.R;
+import com.app.bareillybazarshop.adapter.OrderDetailAdapter;
+import com.app.bareillybazarshop.api.output.CartDetail;
 import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.MyOrderDetailResponse;
 import com.app.bareillybazarshop.api.output.OrderDetail;
+import com.app.bareillybazarshop.api.output.Product;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
@@ -23,6 +29,7 @@ import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
 import com.app.bareillybazarshop.utils.Logger;
+import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import org.w3c.dom.Text;
 
@@ -69,16 +76,33 @@ public class UpdateOrderDetailActivity extends BaseActivity {
     String orderStatusValue = "";
     String toOrderStatusValue = "";
     String deliveryPerson = "";
+    private RecyclerView recycleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_order_detail);
-        setUI();
         setHeader(getString(R.string.header_update_order_detail), "");
+        setUI();
         setUIListener();
+        setRecycler();
+        Logger.INFO("create", "create");
+        if(PreferenceKeeper.getInstance().getIsLogin() == true) {
+            getIntentData();
+        }
+        else {
+            launchActivity(LoginActivity.class);
+        }
+
+    }
+
+
+    private void getIntentData()
+    {
         orderIdValue = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.ORDER_ID);
         orderStatusValue = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.ORDER_STATUS);
+        Logger.INFO("orderIdValue", orderIdValue);
+        Logger.INFO("orderStatusValue", orderStatusValue);
         fetchOrderDetailsAPI();
     }
 
@@ -89,6 +113,7 @@ public class UpdateOrderDetailActivity extends BaseActivity {
         orderQuotedAmount = (TextView) findViewById(R.id.tv_my_order_quoted_ammont);
         orderDeliveryType = (TextView) findViewById(R.id.tv_my_order_delievry_type);
         orderPaymentMethod = (TextView) findViewById(R.id.tv_my_order_payment_method);
+        recycleView = (RecyclerView) findViewById(R.id.rv_home_activity_my_order);
         orderStatus = (TextView) findViewById(R.id.tv_my_order_status);
         orderDeliveryAddressIdentifier = (TextView) findViewById(R.id.tv_my_order_address_id);
         tv_orderInvoiceAmount = (TextView) findViewById(R.id.tv_orderInvoiceAmount);
@@ -134,6 +159,12 @@ public class UpdateOrderDetailActivity extends BaseActivity {
         ll_deliveryTime.setVisibility(View.GONE);
     }
 
+    private void setRecycler() {
+        recycleView.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recycleView.setLayoutManager(mLayoutManager);
+    }
+
     String quotedAmount = "";
     String shopId = "";
     public void setData(OrderDetail orderDetail) {
@@ -160,6 +191,7 @@ public class UpdateOrderDetailActivity extends BaseActivity {
             cb_orderReceiptAcknowledgement.setChecked(orderDetail.getOrderReceiptAcknowledgement() == "N" ? false : true);
         }
         if(orderStatusValue.equals(AppConstant.STATUS.STATUS_CLOSED)) {
+            cb_orderReceiptAcknowledgement.setChecked(orderDetail.getOrderReceiptAcknowledgement() == "N" ? false : true);
             cb_orderInvoiceAmountCollected.setChecked(orderDetail.getOrderInvoiceAmountCollected() == "N" ? false : true);
             cb_orderReceiptAcknowledgementCollected.setChecked(orderDetail.getOrderReceiptAcknowledgementCollected() == "N" ? false : true);
         }
@@ -258,6 +290,8 @@ public class UpdateOrderDetailActivity extends BaseActivity {
             public void onSuccess(MyOrderDetailResponse result) {
                 hideProgressBar();
                 setData(result.getOrderDetails().get(0));
+                setPlaceCartAdapter(result.getCartDetails());
+
             }
 
             @Override
@@ -268,6 +302,11 @@ public class UpdateOrderDetailActivity extends BaseActivity {
         AppRestClient.getClient().sendRequest(this, request, TAG);
     }
 
+
+    private void setPlaceCartAdapter(List<CartDetail> carts) {
+        OrderDetailAdapter placeOrderlAdapter = new OrderDetailAdapter(this, carts);
+        recycleView.setAdapter(placeOrderlAdapter);
+    }
 
     private void fetchDeliveryPersonAPI() {
         showProgressBar();

@@ -13,13 +13,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
+        <com.app.bareillybazarshop.utils.RoundedImageView
             android:id="@+id/iv_signup_profile"
             android:layout_width="@dimen/dp_80"
             android:layout_height="@dimen/dp_80"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop"
-            android:src="@drawable/place_holder" />
+            android:src="@drawable/logo"
+            app:sriv_border_color="@color/color_base"
+            app:sriv_border_width="@dimen/dp_2"
+            app:sriv_oval="true" />
 
         <TextView
             android:id="@+id/tv_userId"

@@ -45,6 +45,14 @@ public class PreferenceKeeper {
         prefs.edit().putBoolean(AppConstant.PreferenceKeeperNames.LOGIN, isLogin).commit();
     }
 
+    public String getUserProfilePicturePath() {
+        return prefs.getString(AppConstant.PreferenceKeeperNames.PROFILE_PICTURE_PATH, "");
+    }
+
+    public void setUserProfilePicturePath(String picturePath) {
+        prefs.edit().putString(AppConstant.PreferenceKeeperNames.PROFILE_PICTURE_PATH, picturePath).commit();
+    }
+
     public String getflatNumber() {
         return prefs.getString(AppConstant.PreferenceKeeperNames.FLAT_NUMBER, "");
     }

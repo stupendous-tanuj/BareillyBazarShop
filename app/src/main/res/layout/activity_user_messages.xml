@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_10"
             android:textSize="@dimen/sp_15"
-            android:text="@string/label_Shop_ID"
+            android:text="@string/label_User_Type"
             android:textColor="@color/black"
             />
 

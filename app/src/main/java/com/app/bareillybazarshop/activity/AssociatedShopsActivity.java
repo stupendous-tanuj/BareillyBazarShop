@@ -14,10 +14,12 @@ import com.app.bareillybazarshop.api.output.AssociatedShopsResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
 import com.app.bareillybazarshop.api.output.OrderDetail;
 import com.app.bareillybazarshop.api.output.UserMessages;
+import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
+import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.List;
 
@@ -28,12 +30,14 @@ public class AssociatedShopsActivity extends BaseActivity {
     private String shopIdORSellerHubId;
     private ImageView iv_addAShop;
     private TextView no_data_available;
+    String USER_TYPE = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_associated_shops);
         setHeader(getString(R.string.header_associated_shops), "");
+        USER_TYPE = PreferenceKeeper.getInstance().getUserType();
         setUI();
         setRecycler();
         associateShopsAPI();
@@ -43,7 +47,9 @@ public class AssociatedShopsActivity extends BaseActivity {
         recycleView = (RecyclerView) findViewById(R.id.recycle_view_associated_shops);
         iv_addAShop  = (ImageView) findViewById(R.id.iv_addAShop);
         no_data_available = (TextView) findViewById(R.id.no_data_available);
-        findViewById(R.id.iv_addAShop).setOnClickListener(this);
+        iv_addAShop.setOnClickListener(this);
+        if(!USER_TYPE.equals(AppConstant.UserType.SELLER_HUB_TYPE))
+            iv_addAShop.setVisibility(View.GONE);
     }
 
     @Override

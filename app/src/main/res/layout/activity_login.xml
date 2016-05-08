@@ -56,6 +56,7 @@
                 android:hint="@string/hint_User_ID"
                 android:padding="@dimen/dp_10"
                 android:textColor="@color/black"
+                android:maxLength="10"
                 android:textSize="@dimen/sp_13" />
 
 

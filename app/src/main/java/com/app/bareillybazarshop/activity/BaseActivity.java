@@ -3,6 +3,7 @@ package com.app.bareillybazarshop.activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.listner.IRightListner;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.Calendar;
 
@@ -60,6 +63,15 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
                     DateFormat.is24HourFormat(getActivity()));
         }
     }
+
+
+    public ImageLoader imageLoader = ImageLoader.getInstance();
+    public DisplayImageOptions imageOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
+            .cacheOnDisk(true)
+            .resetViewBeforeLoading(true).showImageOnFail(R.drawable.index).showImageOnLoading(R.drawable.index).showImageForEmptyUri(R.drawable.index)
+            .considerExifParams(true).bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
 
     public String getData(int i) {
         return String.valueOf((i > 9 ? i : "0" + i));

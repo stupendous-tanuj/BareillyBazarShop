@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +17,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.activity.BaseActivity;
 import com.app.bareillybazarshop.api.output.ErrorObject;
+import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.listner.IDialogListener;
 
 import java.util.regex.Matcher;
@@ -346,20 +348,45 @@ public class DialogUtils {
         }
     }
 
-    public static boolean isLoginVerification(BaseActivity activity, String shopid, String pssword) {
+    public static boolean isLoginVerification(BaseActivity activity, String userId, String password, String userType) {
 
-        boolean cname = TextUtils.isEmpty(shopid);
-        boolean cEmail = TextUtils.isEmpty(pssword);
+        boolean cuserId = TextUtils.isEmpty(userId);
+        boolean cpassword = TextUtils.isEmpty(password);
 
-        if (cname) {
-            DialogUtils.showDialog(activity, activity.getString(R.string.enter_name));
+        if (cuserId) {
+            DialogUtils.showDialog(activity, activity.getString(R.string.enter_userId));
+            return false;
+        }
+        Log.i("DeliveryPerson", ((isMobileVarification(activity,userId)))+"");
+        Log.i("DeliveryPerson", (userType.equals(AppConstant.UserType.DELIVERY_PERSON_TYPE))+"");
+        if(userType.equals(AppConstant.UserType.DELIVERY_PERSON_TYPE))
+        {
+            if(!isMobileVarification(activity,userId)) {
+                DialogUtils.showDialog(activity, activity.getString(R.string.enter_valid_userId));
+                return false;
+            }
+        }
+
+        else if(userType.equals(AppConstant.UserType.SELLER_HUB_TYPE))
+        {
+            if(!((userId.length()==6) && (userId.substring(0,2).equals("SH")))) {
+                DialogUtils.showDialog(activity, activity.getString(R.string.enter_valid_userId));
+                return false;
+            }
+        }
+
+        else if(userType.equals(AppConstant.UserType.SHOP_TYPE))
+        {
+            if(!((userId.length()==6) && (userId.substring(0,2).equals("SP")))) {
+                DialogUtils.showDialog(activity, activity.getString(R.string.enter_valid_userId));
+                return false;
+            }
+        }
+        if (cpassword) {
+            DialogUtils.showDialog(activity, activity.getString(R.string.enter_password));
             return false;
         }
 
-        if (cEmail) {
-            DialogUtils.showDialog(activity, activity.getString(R.string.enter_email));
-            return false;
-        }
         return true;
     }
 

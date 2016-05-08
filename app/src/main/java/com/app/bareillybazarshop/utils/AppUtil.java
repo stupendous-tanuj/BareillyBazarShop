@@ -88,6 +88,16 @@ public class AppUtil {
         return startDatemillis;
     }
 
+    public static int getDotData(String o) {
+        if (o.contains(".")) {
+            StringTokenizer tokenizer = new StringTokenizer(o);
+            return Integer.parseInt(tokenizer.nextToken("."));
+        } else {
+            return Integer.parseInt(o);
+        }
+
+    }
+
     public static int getTotlTime(String time) {
         StringTokenizer tokenizer = new StringTokenizer(time);
         int h = Integer.parseInt(tokenizer.nextToken(":"));

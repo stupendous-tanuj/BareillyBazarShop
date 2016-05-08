@@ -219,6 +219,10 @@ public class ViewAvailableProductActivity extends BaseActivity {
 
     private void viewAvailableProductAPI() {
 
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
+
         if (!DialogUtils.isSpinnerDefaultValue(this, shopIdValue, getString(R.string.label_Shop_ID)) || (shopIdValue.equals(""))) {
             return;
         }

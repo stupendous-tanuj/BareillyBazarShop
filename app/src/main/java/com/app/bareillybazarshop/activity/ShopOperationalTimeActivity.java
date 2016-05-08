@@ -201,6 +201,11 @@ public class ShopOperationalTimeActivity extends BaseActivity {
     }
 
     private void addShopTimeAPI() {
+
+        if(USER_TYPE.equals(AppConstant.UserType.SHOP_TYPE)) {
+            shopIdValue = PreferenceKeeper.getInstance().getUserId();
+        }
+
         String closingDate = et_shop_time_closing_date.getText().toString().trim();
         String openingTime = et_shop_time_opening_time.getText().toString().trim();
         String closingTime = et_shop_time_closing_time.getText().toString().trim();

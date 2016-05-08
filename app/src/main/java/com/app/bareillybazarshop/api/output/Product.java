@@ -13,6 +13,25 @@ public class Product {
     private String productPrice;
     private String productOfferedPrice;
 
+    private int incrementPrize;
+    private int incrementQuntity;
+
+    public int getIncrementPrize() {
+        return incrementPrize;
+    }
+
+    public void setIncrementPrize(int incrementPrize) {
+        this.incrementPrize = incrementPrize;
+    }
+
+    public int getIncrementQuntity() {
+        return incrementQuntity;
+    }
+
+    public void setIncrementQuntity(int incrementQuntity) {
+        this.incrementQuntity = incrementQuntity;
+    }
+
     public String getProductSKUID() {
         return productSKUID;
     }

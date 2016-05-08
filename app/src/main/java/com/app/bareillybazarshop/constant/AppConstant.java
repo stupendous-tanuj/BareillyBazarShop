@@ -67,6 +67,7 @@ public class AppConstant {
 
     public interface PreferenceKeeperNames {
         String LOGIN = "user_login";
+        String PROFILE_PICTURE_PATH = "PROFILE_PICTURE_PATH";
         String FLAT_NUMBER = "flat_number";
         String PINCODE = "pincode";
         String STATE = "state";

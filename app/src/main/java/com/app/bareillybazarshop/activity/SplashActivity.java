@@ -46,6 +46,8 @@ public class SplashActivity extends BaseActivity {
                     }
                     finish();
                 } else {
+                    launchActivity(NoInternetConnectionActivity.class);
+                    /*
                     DialogUtils.showDialogNetwork(SplashActivity.this, getString(R.string.not_network), new IDialogListener() {
                         @Override
                         public void onClickOk() {
@@ -57,6 +59,7 @@ public class SplashActivity extends BaseActivity {
 
                         }
                     });
+                    */
                 }
             }
         };

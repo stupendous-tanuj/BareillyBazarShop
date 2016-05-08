@@ -2,6 +2,7 @@ package com.app.bareillybazarshop.adapter;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +32,15 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+        Log.i("Test2", "Test2");
         View homeAdapter = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_home, parent, false);
         return new OrderDetailHolder(homeAdapter);
+
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
-
+        Log.i("Test2", "Test2");
         final OrderDetail data = getItem(position);
         OrderDetailHolder holder = (OrderDetailHolder) viewHolder;
         setData(holder, data, position);
@@ -61,7 +64,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void onClick(View view) {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString(AppConstant.BUNDLE_KEY.ORDER_ID, orderDetail.getOrderId());
-                 bundle1.putString(AppConstant.BUNDLE_KEY.ORDER_STATUS, orderDetail.getOrderStatus());
+                bundle1.putString(AppConstant.BUNDLE_KEY.ORDER_STATUS, orderDetail.getOrderStatus());
                 activity.launchActivity(UpdateOrderDetailActivity.class, bundle1);
             }
         });

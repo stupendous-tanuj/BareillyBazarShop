@@ -14,11 +14,13 @@ import com.app.bareillybazarshop.api.output.AssociatedShopIdResponse;
 import com.app.bareillybazarshop.api.output.CommonResponse;
 import com.app.bareillybazarshop.api.output.DeliveryPersonResponse;
 import com.app.bareillybazarshop.api.output.ErrorObject;
+import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.network.AppHttpRequest;
 import com.app.bareillybazarshop.network.AppRequestBuilder;
 import com.app.bareillybazarshop.network.AppResponseListener;
 import com.app.bareillybazarshop.network.AppRestClient;
 import com.app.bareillybazarshop.utils.DialogUtils;
+import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +33,14 @@ public class AssociateADeliveryPersonActivity extends BaseActivity {
     LinearLayout ll_shopId;
     String shopIdValue = "";
     String deliveryPerson = "";
+    String USER_TYPE = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_associate_adelivery_person);
         setHeader(getString(R.string.header_associate_a_delivery_person), "");
+        USER_TYPE = PreferenceKeeper.getInstance().getUserType();
         setUI();
         setUIListener();
         fetchAllDeliveryPersonAPI();
@@ -49,6 +53,7 @@ public class AssociateADeliveryPersonActivity extends BaseActivity {
         spinner_deliveryPerson = (Spinner) findViewById(R.id.spinner_deliveryPerson);
         ll_shopId = (LinearLayout) findViewById(R.id.ll_shopId);
         tv_associateADeliveryPerson = (TextView) findViewById(R.id.tv_associateADeliveryPerson);
+
     }
 
     private void setUIListener() {
