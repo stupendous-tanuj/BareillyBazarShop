@@ -44,8 +44,10 @@ $validityRow=mysqli_fetch_array($result);
 
 if(mysqli_num_rows($link)==1)
 $validPromocode = true;
-else
+else{
 $validPromocode = false;
+throw new Exception($INVALID_PROMOCODE_ERROR);
+}
 
 //Evaluate Eligibility Criteria.
 if($validityRow['EligibilityCriteria'] == "Both"){
@@ -57,8 +59,10 @@ else if($validityRow['EligibilityCriteria'] == "New Customer"){
 	$row=mysqli_fetch_array($result);
 	if($row['NewCustomer'] == 1)
 	$eligibilityCriteria = true;
-	else
+	else{
 	$eligibilityCriteria = false;
+	throw new Exception($NOT_ELIGIBLE_PROMOCODE_ERROR);
+	}
 }
 else if($validityRow['EligibilityCriteria'] == "Existing Customer"){
 	$query = "SELECT NewCustomer FROM Customer WHERE CustomerMobileNumber = '".$userId."'";
@@ -66,8 +70,10 @@ else if($validityRow['EligibilityCriteria'] == "Existing Customer"){
 	$row=mysqli_fetch_array($result);
 	if($row['NewCustomer'] == 0)
 	$eligibilityCriteria = true;
-	else
+	else{
 	$eligibilityCriteria = false;
+	throw new Exception($NOT_ELIGIBLE_PROMOCODE_ERROR);
+	}
 }
 
 //Evaluate Code Use Frequency.
@@ -75,27 +81,45 @@ $query = "SELECT PromoCode FROM PromoCodeUsageHistory WHERE CustomerMobileNumber
 $result=mysqli_query($link,$query);
 $row=mysqli_fetch_array($result);
 
-if(mysqli_num_rows($link)>=$validityRow['PromoCodeUseFrequency'])
+if(mysqli_num_rows($link)>=$validityRow['PromoCodeUseFrequency']){
 $promoCodeUseFrequency = false;
+throw new Exception($PROMOCODE_ALREADY_USED_ERROR);
+}
 else
 $promoCodeUseFrequency = true;
 
 //Evaluate Minimum order value.
 if($validityRow['MinimumOrderValue']>$orderValue)
 $minimumOrderValue = false;
-else
+else{
 $minimumOrderValue = true;
+throw new Exception("Minimum Order valud should be ".$validityRow['MinimumOrderValue']);
+}
 
 //Calculate Discount value.
+//in case of Flat Discount
 if($validityRow['DiscountType']=='Flat')
 $discountValue = $validityRow['FlatDiscount'];
+
+//In case of Percent Discount.
 if($validityRow['DiscountType']=='Percent')
 $discountValue = ($orderValue%$validityRow['PercentDiscount'])/100;
 
+//Normalize the discount according to maximum discount value.
 if($discountValue>$validityRow['MaximumDiscount'])
 $discountValue = $validityRow['MaximumDiscount'];
 
-
+if(($validPromocode == true)&&($eligibilityCriteria == true)&&($promoCodeUseFrequency == true)&&($minimumOrderValue == true))
+{
+	$dataResult = array();
+	$dataResult['status']=1;
+	$dataResult['response']['discountValue']=$discountValue;
+	$dataResult['response']['successMessage']=$APPLY_PROMOCODE_SUCCESS;
+}
+else
+{
+	throw new Exception($SOME_ERROR_OCURRED);
+}
   
   echo processResponse($jsonRequest,json_encode($dataResult)); 
   
@@ -104,7 +128,7 @@ $discountValue = $validityRow['MaximumDiscount'];
 catch(Exception $e) {
 	$data = array();
 	$data['status']=0;
-	$data['response']['errorCode']=$CUSTOMER_FAVOURITE_SHOP_SERVICE_ERROR_CODE;
+	$data['response']['errorCode']=$APPLY_PROMOCODE_SERVICE_ERROR_CODE;
 	$data['response']['errorMessage']=$e->getMessage();
 	$data['response']['supportContactNumber']=fetchSupportContactNumber($link,$applicationId);
 	logAnError($link,'Contact_us', $_POST, $userId, json_encode($data), $e);
@@ -114,3 +138,10 @@ finally {
 	mysqli_close($link);
 }
 ?>
+
+$orderValue_MISSING = 'orderValue is missing';
+$INVALID_PROMOCODE_ERROR = 'Invalid Promo Code';
+$NOT_ELIGIBLE_PROMOCODE_ERROR = 'You are not eligible for this promocode.';
+$PROMOCODE_ALREADY_USED_ERROR = 'This Promo code has already been used.';
+$MINIMUM_ORDER_VALUE_ERROR = '';
+$APPLY_PROMOCODE_SUCCESS = 'Promocode applied successfully.';
