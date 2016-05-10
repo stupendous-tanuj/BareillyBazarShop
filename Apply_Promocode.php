@@ -36,20 +36,67 @@ throw new Exception($promoCode_MISSING);
 if($orderValue=="")
 throw new Exception($orderValue_MISSING);
 //Check the validity of the Promo Code.
+
 $sql = "SELECT DiscountType,EligibilityCriteria,PromoCodeUseFrequency,MaximumDiscount,FlatDiscount,PercentDiscount,MinimumOrderValue From PromoCode WHERE ShopId = '".$shopId."' AND Promocode = '".$promoCode."' AND date('Y-m-d') BETWEEN ValidFrom AND ValidTo";
 
 $result=mysqli_query($link,$sql);
+$validityRow=mysqli_fetch_array($result);
+
+if(mysqli_num_rows($link)==1)
+$validPromocode = true;
+else
+$validPromocode = false;
+
+//Evaluate Eligibility Criteria.
+if($validityRow['EligibilityCriteria'] == "Both"){
+$eligibilityCriteria = true;
+}
+else if($validityRow['EligibilityCriteria'] == "New Customer"){
+	$query = "SELECT NewCustomer FROM Customer WHERE CustomerMobileNumber = '".$userId."'";
+	$result=mysqli_query($link,$query);
+	$row=mysqli_fetch_array($result);
+	if($row['NewCustomer'] == 1)
+	$eligibilityCriteria = true;
+	else
+	$eligibilityCriteria = false;
+}
+else if($validityRow['EligibilityCriteria'] == "Existing Customer"){
+	$query = "SELECT NewCustomer FROM Customer WHERE CustomerMobileNumber = '".$userId."'";
+	$result=mysqli_query($link,$query);
+	$row=mysqli_fetch_array($result);
+	if($row['NewCustomer'] == 0)
+	$eligibilityCriteria = true;
+	else
+	$eligibilityCriteria = false;
+}
+
+//Evaluate Code Use Frequency.
+$query = "SELECT PromoCode FROM PromoCodeUsageHistory WHERE CustomerMobileNumber = '".$userId."' AND ShopId = '".$shopId."' AND PromoCode = '".$promoCode."'";
+$result=mysqli_query($link,$query);
 $row=mysqli_fetch_array($result);
 
-  if(mysqli_num_rows($link)==1){
-    
-    //Evaluate Eligibility Criteria.
-    if($row['EligibilityCriteria'] == "Both")
-  	
-  }
-  else{
-  throw new Exception($INVALID_PROMOCODE_ERROR);
-  }
+if(mysqli_num_rows($link)>=$validityRow['PromoCodeUseFrequency'])
+$promoCodeUseFrequency = false;
+else
+$promoCodeUseFrequency = true;
+
+//Evaluate Minimum order value.
+if($validityRow['MinimumOrderValue']>$orderValue)
+$minimumOrderValue = false;
+else
+$minimumOrderValue = true;
+
+//Calculate Discount value.
+if($validityRow['DiscountType']=='Flat')
+$discountValue = $validityRow['FlatDiscount'];
+if($validityRow['DiscountType']=='Percent')
+$discountValue = ($orderValue%$validityRow['PercentDiscount'])/100;
+
+if($discountValue>$validityRow['MaximumDiscount'])
+$discountValue = $validityRow['MaximumDiscount'];
+
+
+  
   echo processResponse($jsonRequest,json_encode($dataResult)); 
   
 }
