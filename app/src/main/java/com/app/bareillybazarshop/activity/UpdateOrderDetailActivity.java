@@ -106,6 +106,7 @@ public class UpdateOrderDetailActivity extends BaseActivity {
         fetchOrderDetailsAPI();
     }
 
+
     public void setUI() {
         orderId = (TextView) findViewById(R.id.tv_my_order_id);
         orderPlacedBy = (TextView) findViewById(R.id.tv_my_order_place_by);
@@ -167,7 +168,8 @@ public class UpdateOrderDetailActivity extends BaseActivity {
 
     String quotedAmount = "";
     String shopId = "";
-    public void setData(OrderDetail orderDetail) {
+    OrderDetail orderDetail = null;
+    public void setData() {
         orderStatusValue = orderDetail.getOrderStatus();
         orderId.setText(orderIdValue);
         orderStatus.setText(orderStatusValue);
@@ -270,6 +272,9 @@ public class UpdateOrderDetailActivity extends BaseActivity {
 
     private void setUIListener() {
         tv_update_order.setOnClickListener(this);
+        orderPlacedBy.setOnClickListener(this);
+        orderPlacedTo.setOnClickListener(this);
+        tv_shippedBy.setOnClickListener(this);
     }
 
     @Override
@@ -277,6 +282,15 @@ public class UpdateOrderDetailActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_update_order:
                 updateOrderStatusApi();
+                break;
+            case R.id.tv_my_order_place_to:
+                callPhone(orderDetail.getShopSupportContactNumber());
+                break;
+            case R.id.tv_my_order_place_by:
+                callPhone(orderDetail.getOrderPlacedBy().split(" ")[0]);
+                break;
+            case R.id.tv_shippedBy:
+                callPhone(orderDetail.getOrderBeingShippedBy().split(" ")[0]);
                 break;
         }
     }
@@ -289,7 +303,8 @@ public class UpdateOrderDetailActivity extends BaseActivity {
             @Override
             public void onSuccess(MyOrderDetailResponse result) {
                 hideProgressBar();
-                setData(result.getOrderDetails().get(0));
+                orderDetail = result.getOrderDetails().get(0);
+                setData();
                 setPlaceCartAdapter(result.getCartDetails());
 
             }

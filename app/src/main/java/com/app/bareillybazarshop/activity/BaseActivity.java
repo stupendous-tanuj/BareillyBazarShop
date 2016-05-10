@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -64,6 +65,12 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
+
+    public void callPhone(String phoneNumber)
+    {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + this.getString(R.string.label_Country_Code) + phoneNumber));
+        this.startActivity(intent);
+    }
 
     public ImageLoader imageLoader = ImageLoader.getInstance();
     public DisplayImageOptions imageOptions = new DisplayImageOptions.Builder().cacheInMemory(true)

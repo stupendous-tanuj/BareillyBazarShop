@@ -28,6 +28,17 @@ public class OrderDetail {
     private String orderDisputeResolvedBy;
     private String orderCancellationReason;
     private String toOrderStatus;
+    private String shopSupportContactNumber;
+
+    public String getShopSupportContactNumber() {
+        return shopSupportContactNumber;
+    }
+
+    public void setShopSupportContactNumber(String shopSupportContactNumber) {
+        this.shopSupportContactNumber = shopSupportContactNumber;
+    }
+
+
     /**
      *
      * @return

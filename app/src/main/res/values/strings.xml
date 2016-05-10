@@ -28,10 +28,12 @@
     <string name="menu_user_messages">User Messages</string>
     <string name="shop_detail">Shop Detail</string>
     <string name="other">Other</string>
+    <string name="label_Country_Code">+91</string>
     <string name="deassociated_product">Are you sure to De-Associate this product.</string>
     <string name="deassociated_delivery_person">Are you sure to De-Associate this Delivery Person.</string>
     <string name="remove_shop_closing_record">Are you sure to Remove this record.</string>
     <string name="order_confirmation">Do you want to confirm the order.</string>
+    <string name="msg_already_confirmed">Order Already Confirmed.</string>
     <string name="deassociated_location">Are you sure to De-Associate this location.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

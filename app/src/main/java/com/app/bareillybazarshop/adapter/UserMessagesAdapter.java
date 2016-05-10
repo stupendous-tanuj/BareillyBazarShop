@@ -1,5 +1,7 @@
 package com.app.bareillybazarshop.adapter;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.app.bareillybazarshop.R;
 import com.app.bareillybazarshop.activity.BaseActivity;
 import com.app.bareillybazarshop.api.output.UserMessages;
+import com.app.bareillybazarshop.utils.PreferenceKeeper;
 
 import java.util.List;
 
@@ -74,13 +77,20 @@ public class UserMessagesAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setType("text/html");
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{userMessages.getUserEmailId()});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Query Response From "+activity.getString(R.string.app_name));
+                activity.startActivity(Intent.createChooser(intent, "Send Email"));
+
             }
         });
 
         holder.tv_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                activity.callPhone(userMessages.getUserMobileNumber());
             }
         });
     }
