@@ -128,10 +128,11 @@ finally {
 	mysqli_close($link);
 }
 ?>
-
+/*
 $orderValue_MISSING = 'orderValue is missing';
 $INVALID_PROMOCODE_ERROR = 'Invalid Promo Code';
 $NOT_ELIGIBLE_PROMOCODE_ERROR = 'You are not eligible for this promocode.';
 $PROMOCODE_ALREADY_USED_ERROR = 'This Promo code has already been used.';
 $MINIMUM_ORDER_VALUE_ERROR = '';
 $APPLY_PROMOCODE_SUCCESS = 'Promocode applied successfully.';
+*/
