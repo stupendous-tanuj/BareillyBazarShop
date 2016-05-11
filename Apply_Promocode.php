@@ -1,22 +1,12 @@
-Check the validity of the Promo Code.
-Evaluate Eligibility Criteria.
-Evaluate Code Use Frequency.
-Evaluate Minimum order value.
-Calculate Discount value.
-in case of Flat Discount
-In case of Percent Discount.
-Normalize the discount according to maximum discount value.
-
-
 <?php
 /*
 request parameters
 {"applicationId": "ANDSH1001","userId": "9503157441","message": "message","userType": "9503157441"}
-ShopTheFortune/Contact_us.php?input={"applicationId": "ANDSH1001","userId": "9503157441","message": "message","userType": "9503157441"}
+shopthefortune.com/api/bareillybazar/test/Apply_Promocode.php?input={"applicationId": "ANDSH1002","userId": "9503157441","message": "message","locale": "en","shopId": "SP1001","promoCode": "FLAT50","orderValue": "200"}
 */
 include 'database.php';
 header('Content-type: x-www-form-urlencoded');
-$jsonRequest = json_decode( processRequest($_POST['input']), true);
+$jsonRequest = json_decode( processRequest($_GET['input']), true);
 $applicationId = mysqli_real_escape_string($link,$jsonRequest['applicationId']);
 $userId = mysqli_real_escape_string($link,$jsonRequest['userId']); 
 $locale = mysqli_real_escape_string($link,$jsonRequest['locale']); 
