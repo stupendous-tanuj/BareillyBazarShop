@@ -1,5 +1,7 @@
 package com.app.bareillybazarshop.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,6 +56,7 @@ public class ViewShopProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_shop_profile);
         setUI();
+        setUIListener();
         setHeader(getString(R.string.header_view_shop_profile), "");
         shopId = getIntent().getExtras().getString(AppConstant.BUNDLE_KEY.SHOP_ID);
         fetchShopKeeperProfileApi();
@@ -85,6 +88,40 @@ public class ViewShopProfileActivity extends BaseActivity {
         spinner_profile_delivery_type = (Spinner) findViewById(R.id.spinner_profile_delivery_type);
         spinner_profile_payment_method = (Spinner) findViewById(R.id.spinner_profile_payment_method);
     }
+
+
+    private void setUIListener()
+    {
+        tv_ownerContactNumber.setOnClickListener(this);
+        tv_supportContactNumber.setOnClickListener(this);
+        tv_orderProcessingNumber.setOnClickListener(this);
+        tv_emailId.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_ownerContactNumber:
+                callPhone(tv_ownerContactNumber.getText().toString());
+                break;
+            case R.id.tv_supportContactNumber:
+                callPhone(tv_supportContactNumber.getText().toString());
+                break;
+            case R.id.tv_orderProcessingNumber:
+                callPhone(tv_orderProcessingNumber.getText().toString());
+                break;
+            case R.id.tv_emailId:
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setType("text/html");
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{tv_emailId.getText().toString()});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Message From "+this.getString(R.string.app_name));
+                this.startActivity(Intent.createChooser(intent, "Send Email"));
+                break;
+        }
+    }
+
 
     public void setShopProfileData(ShopProfile data)
     {

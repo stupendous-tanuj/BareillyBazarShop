@@ -13,7 +13,9 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.app.bareillybazarshop.R;
+import com.app.bareillybazarshop.activity.BirthdayWishActivity;
 import com.app.bareillybazarshop.activity.UpdateOrderDetailActivity;
+import com.app.bareillybazarshop.activity.WebViewActivity;
 import com.app.bareillybazarshop.constant.AppConstant;
 import com.app.bareillybazarshop.utils.Logger;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -52,25 +54,36 @@ public class GcmIntentService extends IntentService {
                 if (extras != null && extras.size() > 0) {
                     //  sendMessageBroadcast(extras.toString(), "");
                     try {
-                        String orderId = extras.getString("orderId");
-                        String msg = extras.getString("message");
-                        String orderStatus = extras.getString("orderStatus");
-                        if (msg != null && !msg.equalsIgnoreCase("")) {
-                            Logger.INFO("GCM RESPONSE :: ", msg);
-//                            JSONObject res = new JSONObject(response);
-                            //                          if (res.has("response")) {
-                            //JSONObject data = res.getJSONObject("response");
-                            //String msg = (String) data.get("message");
-                            sendNotification(getResources().getString(R.string.app_name), msg, "", orderId, orderStatus);
-                            MediaPlayer mp = MediaPlayer.create(this, R.raw.soho);
-                            mp.start();
-                            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                            // Vibrate for 500 milliseconds
-                            v.vibrate(AppConstant.VIBRATE_TIME);
-
-                            // sendMessageBroadcast(msg, type);
-                            //                        }
+                        String eventType = extras.getString("eventType");
+                        if(eventType.equals(AppConstant.NOTIFICATION.ORDER_STATUS)) {
+                            String orderId = extras.getString("orderId");
+                            String msg = extras.getString("message");
+                            String orderStatus = extras.getString("orderStatus");
+                            if (msg != null && !msg.equalsIgnoreCase("")) {
+                                Logger.INFO("GCM RESPONSE :: ", msg);
+                                sendNotification(getResources().getString(R.string.app_name), msg, "", orderId, orderStatus);
+                                MediaPlayer mp = MediaPlayer.create(this, R.raw.soho);
+                                mp.start();
+                                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                                // Vibrate for 500 milliseconds
+                                v.vibrate(AppConstant.VIBRATE_TIME);
+                                // sendMessageBroadcast(msg, type);
+                            }
                         }
+                        if(eventType.equals(AppConstant.NOTIFICATION.WEB_LINK)) {
+                            String link = extras.getString("link");
+                            String msg = extras.getString("message");
+                            if (msg != null && !msg.equalsIgnoreCase("")) {
+                                sendWebLinkNotification(getResources().getString(R.string.app_name), msg, link);
+                            }
+                        }
+                        if(eventType.equals(AppConstant.NOTIFICATION.BIRTHDAY_WISH)) {
+                            String msg = extras.getString("message");
+                            if (msg != null && !msg.equalsIgnoreCase("")) {
+                                sendBirthdayNotification(getResources().getString(R.string.app_name), msg);
+                            }
+                        }
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -105,6 +118,55 @@ public class GcmIntentService extends IntentService {
         notificationBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
         notificationBuilder.setAutoCancel(true);
         //mp.stop();
+
+        // Get an instance of the NotificationManager service
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        // Build the notification and issues it with notification manager.
+        notificationManager.notify(1, notificationBuilder.build());
+    }
+
+    private void sendBirthdayNotification(String title, String msg) {
+        // Build intent for notification content
+        PendingIntent pendingIntent;
+        Bundle eventBundle = new Bundle();
+        Intent intent = new Intent(this, BirthdayWishActivity.class);
+        intent.putExtras(eventBundle);
+        intent.setAction("ACTION");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle(title)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
+                .setContentIntent(pendingIntent);
+        notificationBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
+        notificationBuilder.setAutoCancel(true);
+
+        // Get an instance of the NotificationManager service
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        // Build the notification and issues it with notification manager.
+        notificationManager.notify(1, notificationBuilder.build());
+    }
+
+    private void sendWebLinkNotification(String title, String msg, String link) {
+
+        PendingIntent pendingIntent;
+        Bundle eventBundle = new Bundle();
+        eventBundle.putString(AppConstant.BUNDLE_KEY.LINK, link);
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtras(eventBundle);
+        intent.setAction("ACTION");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle(title)
+                .setContentIntent(pendingIntent)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(msg));
+        notificationBuilder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
+        notificationBuilder.setAutoCancel(true);
 
         // Get an instance of the NotificationManager service
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);

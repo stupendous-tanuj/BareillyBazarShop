@@ -20,6 +20,7 @@ public class AppConstant {
     public interface BUNDLE_KEY {
         String HINDI_NAME = "HINDI_NAME";
         String PRICE = "price";
+        String LINK = "LINK";
         String OFFER_PRICE = "OFFER_PRICE";
         String OrderPlacedTo= "OrderPlacedTo";
         String OrderPlacedBy= "OrderPlacedBy";
@@ -64,6 +65,13 @@ public class AppConstant {
         return languageList;
     }
 
+
+    public interface NOTIFICATION {
+        String BIRTHDAY_WISH = "BIRTHDAY_WISH";
+        String ORDER_STATUS = "ORDER_STATUS";
+        String DELIVERY_STATUS = "DELIVERY_STATUS";
+        String WEB_LINK = "WEB_LINK";
+    }
 
     public interface PreferenceKeeperNames {
         String LOGIN = "user_login";

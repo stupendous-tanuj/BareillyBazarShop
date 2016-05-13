@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <!-- GCM Maifest Permission -->
     <!-- Keeps the processor from sleeping when a message is received. -->
@@ -191,11 +191,10 @@
             android:label="@string/title_activity_associated_delivery_locations"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <activity
             android:name=".activity.NoInternetConnectionActivity"
             android:label="@string/title_activity_no_internet_connection"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
 
         <!-- receiver for gcm -->
         <receiver
@@ -210,6 +209,14 @@
         <!-- service for gcm -->
         <service android:name=".notification.GcmIntentService" />
 
+        <activity
+            android:name=".activity.BirthdayWishActivity"
+            android:label="@string/title_activity_birthday_wish"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:label="@string/title_activity_web_view"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

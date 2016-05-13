@@ -427,4 +427,6 @@
     <string name="default_Select_Date">Select Date...</string>
     <string name="title_activity_customer_messages">User Messages</string>
     <string name="title_activity_no_internet_connection">No Internet Connection</string>
+    <string name="title_activity_birthday_wish">BirthdayWishActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 </resources>
